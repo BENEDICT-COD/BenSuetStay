@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Launcher Icon Foreground: Ultra-Clear Single-line "BenSuet Stay" -->
+    <group
+        android:translateX="54"
+        android:translateY="54">
+
+        <!-- Scaled for maximum clarity within the 72dp safe zone -->
+        <!-- Wordmark centered by translating back approx half its total width -->
+        <group
+            android:translateX="-32"
+            android:translateY="-6"
+            android:scaleX="0.32"
+            android:scaleY="0.32">
+
+            <!-- BenSuet (Clean, distinct paths for zero distortion) -->
+            <path android:fillColor="#123DAD" android:pathData="M0,0h14c6,0 10,3 10,8c0,3 -2,5 -6,6c5,1 8,4 8,9c0,6 -5,9 -12,9H0V0z M6,5v8h7c3,0 5,-1 5,-4s-2,-4 -5,-4H6z M6,18v9h8c3,0 5,-1 5,-4.5s-2,-4.5 -5,-4.5H6z" />
+            <path android:fillColor="#123DAD" android:pathData="M38,15c0,-8 -12,-8 -12,5c0,10 12,10 12,3h-6c0,2 -1,3 -2,2s-1,-5 4,-5H38z M31,17c0,-3 4,-3 4,0H31z" />
+            <path android:fillColor="#123DAD" android:pathData="M44,12h6v3c1,-3 5,-4 8,-1c2,2 2,5 2,8v12h-6v-11c0,-4 -3,-4 -4,-2v13h-6V12z" />
+            <path android:fillColor="#123DAD" android:pathData="M76,3c0,-5 15,-6 14,8c0,10 -14,8 -14,18c0,10 15,10 15,1h-7c0,4 -3.5,4 -3.5,-1c0,-6 7.5,-5 7.5,-16c0,-10 -12,-9 -12,-6z" />
+            <path android:fillColor="#123DAD" android:pathData="M84,12h6v13c0,3 2,4 4,2v-15h6v22h-6v-3c-1,2 -5,3 -7,0c-2,-2 -2,-5 -2,-8V12z" />
+            <path android:fillColor="#123DAD" android:pathData="M118,15c0,-8 -12,-8 -12,5c0,10 12,10 12,3h-6c0,2 -1,3 -2,2s-1,-5 4,-5H118z M111,17c0,-3 4,-3 4,0H111z" />
+            <path android:fillColor="#123DAD" android:pathData="M128,3v9h-3v4h3v12c0,5 5,5 5,1h-2.5c0,1 0,1 0,-1v-12h2.5v-4h-2.5v-9H128z" />
+
+            <!-- Stay (Properly spaced on same line) -->
+            <path android:fillColor="#123DAD" android:pathData="M152,3c0,-5 15,-6 14,8c0,10 -14,8 -14,18c0,10 15,10 15,1h-7c0,4 -3.5,4 -3.5,-1c0,-6 7.5,-5 7.5,-16c0,-10 -12,-9 -12,-6z" />
+            <path android:fillColor="#123DAD" android:pathData="M164,3v9h-3v4h3v12c0,5 5,5 5,1h-2.5c0,1 0,1 0,-1v-12h2.5v-4h-2.5v-9H164z" />
+            <path android:fillColor="#123DAD" android:pathData="M178,12c5,0 9,4 9,10c0,7 -4,10 -9,10c-2,0 -4,-1 -6,-3v3h-6V12h6v3c2,-2 4,-3 6,-3z M178,16.5c-2.5,0 -4.5,2 -4.5,6c0,4 2,6 4.5,6c2.5,0 4.5,-2 4.5,-6c0,-4 -2,-6 -4.5,-6z" />
+            <path android:fillColor="#123DAD" android:pathData="M196,12h6l3,10l3,-10h6l-7,22c-2,6 -8,6 -10.5,3l3.5,-3.5c1.5,1 3,1 4,-1.5l1.5,-3.5L196,12z" />
+        </group>
+    </group>
+</vector>

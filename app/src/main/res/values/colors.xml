@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_orange">#F2994A</color>
+    <color name="accent_red">#D64545</color>
+    <color name="bg_body">#F7F8FB</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="brand_blue">#123DAD</color>
+    <color name="text_primary">#1E2233</color>
+    <color name="text_muted">#6B78A4</color>
+    <color name="text_placeholder">#9CA3B8</color>
+    <color name="border_light">#E4E7F0</color>
+    <color name="bg_card_outline">#E4E7F0</color>
+    <color name="accent_green">#2FA36B</color>
+</resources>

@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.BenSuetStay" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowSplashScreenBackground">#123DAD</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#123DAD</item>
+        <item name="android:windowSplashScreenBrandingImage">@null</item>
+    </style>
+    <style name="Theme.BenSuetStay" parent="Base.Theme.BenSuetStay" />
+</resources>

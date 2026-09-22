@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".WelcomeActivity">
+
+    <!-- Skyline pinned to bottom removed for a clean white background matching property24 style -->
+
+    <!-- Logo group (fades in — Frame 2) -->
+    <LinearLayout
+        android:id="@+id/logoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0">
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/brand_blue"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="STUDENT ACCOMMODATION"
+            android:textColor="@color/brand_blue"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            android:alpha="0.8" />
+    </LinearLayout>
+
+    <!-- Button group (rises in — Frame 3) -->
+    <LinearLayout
+        android:id="@+id/buttonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:padding="28dp"
+        android:alpha="0"
+        android:translationY="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="22dp"
+            android:text="FIND YOUR SPACE"
+            android:textColor="@color/brand_blue"
+            android:alpha="0.55"
+            android:textSize="11sp" />
+
+        <Button
+            android:id="@+id/btnGetStarted"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="14dp"
+            android:backgroundTint="@color/brand_blue"
+            android:text="Get Started"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:text="I already have an account"
+            android:textColor="@color/brand_blue"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/tvBrowse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:text="Browse without an account →"
+            android:textColor="@color/brand_blue"
+            android:alpha="0.65"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</FrameLayout>

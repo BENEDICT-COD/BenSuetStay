@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_home"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_applications"
+        android:icon="@drawable/ic_pending"
+        android:title="Applications" />
+    <item
+        android:id="@+id/nav_bookings"
+        android:icon="@drawable/ic_calendar_check"
+        android:title="Bookings" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
+</menu>
