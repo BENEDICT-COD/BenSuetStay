@@ -1,4 +1,6 @@
 # BenSuet Stay 
+**VIDEO PRESENTATION**
+https://drive.google.com/file/d/1ikP7i9yvL_1ChDlEHmDNDV4_kkpdz1Up/view?usp=sharing
 
 **BenSuet Stay** is an Android application that helps South African students find safe, verified accommodation near their institutions — with funding-aware filtering that shows NSFAS-funded students only NSFAS-accredited accommodation near their campus, and self-funded/bursary students only self-funded options near theirs.
 
