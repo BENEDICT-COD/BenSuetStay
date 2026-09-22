@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="180dp"
+    android:viewportWidth="300"
+    android:viewportHeight="180">
+    <!-- Map Background -->
+    <path
+        android:fillColor="#E5EFEA"
+        android:pathData="M0,0 h300 v180 h-300 z" />
+    <!-- Water feature -->
+    <path
+        android:fillColor="#D4E6F1"
+        android:pathData="M0,40 Q60,30 120,70 T240,50 T300,90 L300,120 Q240,80 180,100 T60,60 T0,80 Z" />
+    <!-- Park areas -->
+    <path
+        android:fillColor="#D5F5E3"
+        android:pathData="M180,20 h60 v40 h-60 z M20,110 h50 v40 h-50 z" />
+    <!-- Main Roads -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:pathData="M0,100 h300 M120,0 v180 M240,0 v180 M0,20 L300,150" />
+    <!-- Secondary Roads -->
+    <path
+        android:strokeColor="#E5E7E9"
+        android:strokeWidth="3"
+        android:pathData="M0,140 h300 M50,0 v180 M180,0 v180" />
+</vector>

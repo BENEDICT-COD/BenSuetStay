@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "52178379349",
+    "project_id": "bensuetstay",
+    "storage_bucket": "bensuetstay.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52178379349:android:ceb4340296173301d2aadc",
+        "android_client_info": {
+          "package_name": "com.mansuetdev.bensuetstay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3TY1VPTfZVNflxWeP6Yu1oz2dHwEr5o8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

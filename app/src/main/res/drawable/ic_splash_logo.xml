@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="288dp"
+    android:height="288dp"
+    android:viewportWidth="288"
+    android:viewportHeight="288">
+
+    <!-- Foreground logo text uses #123DAD -->
+    <!-- Strictly "BenSuet Stay" centered wordmark, no logo, no tagline -->
+    <group
+        android:fillColor="@color/brand_blue"
+        android:translateX="4"
+        android:translateY="20">
+        <!-- B -->
+        <path android:pathData="M50,110h14c6,0 10,3 10,8c0,3 -2,5 -6,6c5,1 8,4 8,9c0,6 -5,9 -12,9H50V110z M56,115v8h7c3,0 5,-1 5,-4s-2,-4 -5,-4H56z M56,128v9h8c3,0 5,-1 5,-4.5s-2,-4.5 -5,-4.5H56z" />
+        <!-- e -->
+        <path android:pathData="M82,121c0,-6 -10,-6 -10,7c0,13 11,13 11,4h-5.5c0,3 -2,4 -3,3c-1,-1 -1,-6 3.5,-6H82V121z M74,125c0,-4 6,-4 6,0H74z" />
+        <!-- n -->
+        <path android:pathData="M87,120h5v3c1,-3 5,-4 8,-1c2,2 2,5 2,8v12h-5v-11c0,-4 -3,-4 -4,-2v13h-6V120z" />
+        <!-- s -->
+        <path android:pathData="M116,121c0,-4 -10,-5 -9,3c0,5 9,4 9,10c0,6 -11,6 -11,0h5c0,2 2.5,2.5 2.5,0c0,-3 -5.5,-2.5 -5.5,-9c0,-6 9,-5 9,-4z" />
+        <!-- u -->
+        <path android:pathData="M120,120h5v13c0,3 2,4 4,2v-15h5v22h-5v-3c-1,2 -5,3 -7,0c-2,-2 -2,-5 -2,-8V120z" />
+        <!-- e -->
+        <path android:pathData="M148,121c0,-6 -10,-6 -10,7c0,13 11,13 11,4h-5.5c0,3 -2,4 -3,3c-1,-1 -1,-6 3.5,-6H148V121z M140,125c0,-4 6,-4 6,0H140z" />
+        <!-- t -->
+        <path android:pathData="M155,113v7h-3v4h3v12c0,5 5,5 5,1h-2.5c0,1 0,1 0,-1v-12h2.5v-4h-2.5v-7H155z" />
+        <!-- S -->
+        <path android:pathData="M175,113c0,-5 -11,-6 -10,3c0,6 10,5 10,12c0,7 -11,7 -11,1h5c0,3 2.5,3 2.5,-1c0,-4 -5.5,-3 -5.5,-11c0,-7 9,-6 9,-4z" />
+        <!-- t -->
+        <path android:pathData="M182,113v7h-3v4h3v12c0,5 5,5 5,1h-2.5c0,1 0,1 0,-1v-12h2.5v-4h-2.5v-7H182z" />
+        <!-- a -->
+        <path android:pathData="M198,120c-5,0 -8,4 -8,11c0,7 3,10 8,10c2,0 4,-1 6,-3v3h5V120h-5v3c-1.5,-2 -3.5,-3 -6,-3z M199,124.5c2.5,0 5,2.5 5,6.5c0,4 -2.5,6.5 -5,6.5c-2.5,0 -4.5,-2.5 -4.5,-6.5c0,-4 2.5,-6.5 4.5,-6.5z" />
+        <!-- y -->
+        <path android:pathData="M212,120h5l3.5,12l3.5,-12h5l-7,22c-2,6 -8,6 -10.5,3l3.5,-3.5c1.5,1 3,1 4,-1.5l1.5,-3.5L212,120z" />
+    </group>
+</vector>
