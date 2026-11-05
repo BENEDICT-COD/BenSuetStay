@@ -186,4 +186,4 @@ Final-year Diploma in IT (Software Development), Rosebank College (The IIE)
 
 ## License
 
-Developed for academic purposes as part of the PROG6212/APPR6312 Portfolio of Evidence at Rosebank College (The IIE).
+Developed for academic purposes as part of the OPSC6312 Portfolio of Evidence at Rosebank College (The IIE).
