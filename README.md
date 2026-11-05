@@ -1,4 +1,4 @@
-# BenSuet Stay 🏠
+# BenSuet Stay
 
 **BenSuet Stay** is an Android app that helps South African students find safe, verified accommodation near their institutions, with funding-aware filtering. NSFAS-funded students see NSFAS-accredited rooms near their campus, and self-funded or bursary students see self-funded options near theirs.
 
@@ -6,7 +6,7 @@ Built as the Portfolio of Evidence (PoE) project for **PROG6212** and **APPR6312
 
 ---
 
-## 📱 About the App
+## About the App
 
 There are three roles. All of them sign in with Firebase Authentication.
 
@@ -14,7 +14,7 @@ There are three roles. All of them sign in with Firebase Authentication.
 - **Landlords** are created by an admin. They see only the listings assigned to them, and only the bookings and applications for those listings. They confirm or decline viewings and approve or reject applications. Approving takes one space off the room automatically.
 - **Admins** create, edit and delete listings, including photos and a video. They also create and remove landlord accounts and send landlords password-reset emails.
 
-## ✨ Features
+## Features
 
 ### Student
 - Registration with name, address, institution, email, password and funding type (NSFAS or Self-Funded/Bursary).
@@ -43,7 +43,7 @@ There are three roles. All of them sign in with Firebase Authentication.
   - Media: listing photos, room photos and a video, linked from the admin's phone.
 - Landlord management: create accounts, send reset emails, delete accounts (their listings are unassigned).
 
-## ✅ PoE Requirements: where to find each one
+## PoE Requirements: where to find each one
 
 | Requirement | How it's done | Code |
 |---|---|---|
@@ -56,7 +56,7 @@ There are three roles. All of them sign in with Firebase Authentication.
 | Multi-language | All 11 written SA languages | `res/values-*`, `LanguagePicker.kt` |
 | NoSQL store/read | Cloud Firestore | `*Repository.kt` |
 
-## 🎬 Demo-video checklist
+##  Demo-video checklist
 
 1. **Register and log in.** Then open Firebase → Authentication and point out that passwords aren't visible anywhere.
 2. **Continue with Google** on the login screen.
@@ -70,7 +70,7 @@ There are three roles. All of them sign in with Firebase Authentication.
 6. **Real-time notifications.** Use two emulators/phones (student and landlord). The landlord confirms the viewing and the student's phone shows a notification immediately.
 7. **Push notifications.** Send one from the Firebase console to the `students` topic with the app closed (setup step 7 below).
 
-## 🌍 Languages
+## Languages
 
 The whole app is available in all 11 written official languages of South Africa: English, Afrikaans, isiZulu, isiXhosa, Sepedi, Setswana, Sesotho, Xitsonga, siSwati, Tshivenḓa and isiNdebele.
 
@@ -80,7 +80,7 @@ The whole app is available in all 11 written official languages of South Africa:
 - **What stays the same:** values stored in Firestore (room types, amenities, funding) stay in English, so filtering and approvals work the same in every language. Only what's displayed is translated.
 - **Native review recommended:** translations were machine-assisted and checked for completeness and formatting. Before release, have a native speaker review them, especially Tshivenḓa, isiNdebele, siSwati and Xitsonga.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -92,7 +92,7 @@ The whole app is available in all 11 written official languages of South Africa:
 | Images | Coil |
 | Min / target SDK | 26 (Android 8.0) / 37 |
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 app/src/main/java/com/mansuetdev/bensuetstay/
@@ -120,7 +120,7 @@ firestore.rules, storage.rules, firebase.json   # Security rules (repo root)
 | `bookings` | auto | the student (create), the landlord (status) | that student, that landlord, admins |
 | `applications` | auto | the student (create), the landlord (status/feedback) | that student, that landlord, admins |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Android Studio (latest stable)
@@ -169,7 +169,7 @@ Open in Android Studio, let Gradle sync, then run on a device or emulator. Test 
 ```
 `ListingLogicTest` covers filtering, campus matching, rent parsing and sorting. `ValidatorsTest` covers the SA ID, phone and email checks.
 
-## 📋 Known Limitations / Roadmap
+## Known Limitations / Roadmap
 - **Listing photos and video only display on the phone that picked them** (the admin's). Other phones show a placeholder. Sharing them needs Cloud Storage (Blaze plan) or a free image host.
 - **Application documents aren't uploaded.** Only their file names are saved, so landlords ask students to bring the documents to the viewing. Uploading needs Cloud Storage (Blaze plan).
 - Profile pictures need Cloud Storage, so they won't upload on the Spark plan.
@@ -177,13 +177,13 @@ Open in Android Studio, let Gradle sync, then run on a device or emulator. Test 
 - Deleting a landlord in the app removes their profile and blocks login. The Auth account itself has to be deleted in the console, or by a Cloud Function.
 - Campus matching is text-based ("Wits" ≠ "University of the Witwatersrand"). A fixed list of institutions would be more reliable.
 
-## 👤 Author
+## Author
 
 **Mpilonhle Memela**
 Final-year Diploma in IT (Software Development), Rosebank College (The IIE)
 [Mansuet Dev](https://mansuetdev.tech): freelance web & mobile development
 [GitHub](https://github.com/BENEDICT-COD) · [LinkedIn](https://linkedin.com/in/mpilonhle-memela-a71130293)
 
-## 📄 License
+## License
 
 Developed for academic purposes as part of the PROG6212/APPR6312 Portfolio of Evidence at Rosebank College (The IIE).

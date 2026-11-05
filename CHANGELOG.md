@@ -1,6 +1,6 @@
 # Changelog
 
-## Settings depth (lecturer feedback, Nov 2026)
+## Settings depth 
 Every Settings row now does real work, and the new features are controlled from Settings.
 - **Sign-in & security:** change password for students. Google accounts are told their password is managed by Google.
 - **Notifications:** switches for real-time booking/application alerts and for push announcements (FCM topics), plus a shortcut to the phone's notification settings that shows whether they're allowed.
@@ -14,7 +14,7 @@ Every Settings row now does real work, and the new features are controlled from 
 - **Rules:** `firestore.rules` now lets students delete their own profile (republish it).
 - 57 new strings, translated into all 10 other languages.
 
-## SSO, REST API, offline sync, notifications (Nov 2026)
+## SSO, REST API, offline sync, notifications
 - **Google single sign-on.** Credential Manager + Firebase Auth. Existing users of any role land on their home screen; new Google users complete a short student profile (no password).
 - **REST API (OpenStreetMap Nominatim).** Listings are geocoded when saved, and students see the distance to their campus. Results are cached and limited to 1 request per second.
 - **Offline mode with sync.** A SQLite outbox holds viewing bookings and applications made offline. They sync automatically when the network returns, and duplicate applications are re-checked on the server. Lists show "Waiting to sync", the homepage notes when it's showing saved (cached) listings, and a notification confirms the sync.
@@ -24,14 +24,14 @@ Every Settings row now does real work, and the new features are controlled from 
   - The Android 13+ notification permission is requested, and notifications have their own channel.
 - **New Firestore rules** for `notifications`. 29 new strings, translated into all 10 other languages.
 
-## Multi-language (Nov 2026)
+## Multi-language 
 - **All 11 written SA languages:** every user-facing string (376) moved into `strings.xml`, with full translations for Afrikaans, isiZulu, isiXhosa, Sepedi, Setswana, Sesotho, Xitsonga, siSwati, Tshivenḓa and isiNdebele.
 - **Language picker** on the Welcome screen and in Settings for students, landlords and admins, using AppCompat per-app locales (`locales_config.xml` and `autoStoreLocales`).
 - **Stored data stays in English.** Room types, amenities and funding labels are translated only on screen, so Firestore data and approvals don't depend on the language.
 - **Translatable prices.** Price labels moved out of `ListingLogic` (now numbers only), so they translate ("R2 500/mo" → "R2 500/ngenyanga").
 - **Fake language switch removed.** It had no effect and has been replaced by the real one.
 
-## Security & data overhaul (Nov 2026)
+## Security & data overhaul 
 
 > **Spark plan:** listing photos are still linked from the admin's phone, and application documents are recorded by name only, as before. Nothing in the app needs Cloud Storage except profile pictures.
 
