@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +8,26 @@
     tools:context=".WelcomeActivity">
 
     <!-- Skyline pinned to bottom removed for a clean white background matching property24 style -->
+
+    <!-- Language picker, so users can switch before registering -->
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/brand_blue"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_language"
+        app:drawableTint="@color/brand_blue"
+        tools:text="English" />
 
     <!-- Logo group (fades in — Frame 2) -->
     <LinearLayout
@@ -32,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="STUDENT ACCOMMODATION"
+            android:text="@string/student_accommodation_2"
             android:textColor="@color/brand_blue"
             android:textSize="12sp"
             android:letterSpacing="0.1"
@@ -55,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="22dp"
-            android:text="FIND YOUR SPACE"
+            android:text="@string/find_your_space"
             android:textColor="@color/brand_blue"
             android:alpha="0.55"
             android:textSize="11sp" />
@@ -66,7 +87,7 @@
             android:layout_height="56dp"
             android:layout_marginBottom="14dp"
             android:backgroundTint="@color/brand_blue"
-            android:text="Get Started"
+            android:text="@string/get_started"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
             android:textStyle="bold" />
@@ -76,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:text="I already have an account"
+            android:text="@string/i_already_have_an_account"
             android:textColor="@color/brand_blue"
             android:textAllCaps="false" />
 
@@ -86,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
-            android:text="Browse without an account →"
+            android:text="@string/browse_without_an_account"
             android:textColor="@color/brand_blue"
             android:alpha="0.65"
             android:textSize="13sp" />

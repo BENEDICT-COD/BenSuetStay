@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reason for Rejection"
+        android:text="@string/reason_for_rejection"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:textSize="14sp" />
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="e.g. Fully booked, maintenance, etc."
+        android:hint="@string/e_g_fully_booked_maintenance_etc"
         android:inputType="textMultiLine"
         android:minLines="2"
         android:background="@drawable/bg_input_field"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Suggest an Alternative Time (Optional)"
+        android:text="@string/suggest_an_alternative_time_optional"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:textSize="14sp" />
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="e.g. Tomorrow at 10:00 AM"
+        android:hint="@string/e_g_tomorrow_at_10_00"
         android:inputType="text"
         android:background="@drawable/bg_input_field"
         android:padding="12dp"

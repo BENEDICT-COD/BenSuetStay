@@ -1,15 +1,35 @@
+# Android Studio / IntelliJ
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.idea/*
+!.idea/gradle.xml
+!.idea/misc.xml
 .DS_Store
-/build
+
+# Gradle / build output
+.gradle/
+.kotlin/
+build/
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+gradle-app.setting
+
+# Never commit compiled binaries
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Logs / heap dumps
+*.log
+*.hprof
+
+# Signing keys
+*.jks
+*.keystore
+
+# google-services.json is committed on purpose (grading convenience). Firebase API keys
+# for Android aren't secret; security comes from firestore.rules / storage.rules.
+# Uncomment to stop committing it:
+# app/google-services.json

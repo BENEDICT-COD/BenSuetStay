@@ -9,5 +9,5 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_image_placeholder"
         android:scaleType="centerCrop"
-        android:contentDescription="Accommodation photo" />
+        android:contentDescription="@string/accommodation_photo" />
 </FrameLayout>

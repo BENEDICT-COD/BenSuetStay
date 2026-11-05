@@ -16,7 +16,7 @@
         android:layout_height="20dp"
         android:src="@drawable/ic_description"
         app:tint="@color/brand_blue"
-        android:contentDescription="Document" />
+        android:contentDescription="@string/document" />
 
     <TextView
         android:id="@+id/tvDocumentName"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View"
+        android:text="@string/view"
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="@color/brand_blue" />

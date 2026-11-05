@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,13 +24,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -48,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create your account"
+                android:text="@string/create_your_account"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="24dp"
-                android:text="Find safe accommodation near your campus"
+                android:text="@string/find_safe_accommodation_near_your_campus"
                 android:textSize="14sp"
                 android:textColor="@color/text_muted" />
 
@@ -67,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Full Names"
+                android:text="@string/full_names"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -80,7 +81,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="e.g. Mpilonhle Memela"
+                android:hint="@string/e_g_mpilonhle_memela"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPersonName"
@@ -91,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Institution / School"
+                android:text="@string/institution_school"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -104,7 +105,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="e.g. Wits University"
+                android:hint="@string/e_g_wits_university"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="text"
@@ -115,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Campus Address"
+                android:text="@string/campus_address"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -128,7 +129,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="Street address"
+                android:hint="@string/street_address"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPostalAddress"
@@ -139,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Email or Phone Number"
+                android:id="@+id/tvEmailLabel"
+                android:text="@string/email"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -152,7 +154,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="you@email.com"
+                android:hint="@string/you_email_com"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textEmailAddress"
@@ -163,12 +165,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Password"
+                android:id="@+id/tvPasswordLabel"
+                android:text="@string/password"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
             <FrameLayout
+                android:id="@+id/passwordContainer"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginBottom="20dp"
@@ -181,7 +185,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="48dp"
                     android:background="@android:color/transparent"
-                    android:hint="Create a password"
+                    android:hint="@string/create_a_password"
                     android:textColorHint="@color/text_placeholder"
                     android:textColor="@color/text_primary"
                     android:inputType="textPassword"
@@ -195,7 +199,7 @@
                     android:layout_marginEnd="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_visibility"
-                    android:contentDescription="Show password" />
+                    android:contentDescription="@string/show_password" />
             </FrameLayout>
 
             <!-- Funding type -->
@@ -203,7 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="How is your studying funded?"
+                android:text="@string/how_is_your_studying_funded"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -221,7 +225,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="NSFAS"
+                    android:text="@string/nsfas"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/surface_white"
@@ -235,7 +239,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Self/Bursary funded"
+                    android:text="@string/self_bursary_funded"
                     android:textSize="14sp"
                     android:textColor="@color/text_muted"
                     android:background="@android:color/transparent"
@@ -249,13 +253,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                android:text="Create Account"
+                tools:text="Create Account"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"
                 android:background="@drawable/bg_button_primary"
                 android:clickable="true"
                 android:focusable="true" />
+
+            <TextView
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_button_outlined"
+                android:clickable="true"
+                android:drawablePadding="12dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/continue_with_google"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_google" />
 
             <TextView
                 android:id="@+id/tvLoginLink"

@@ -1,208 +1,128 @@
 package com.mansuetdev.bensuetstay
 
-import android.app.AlertDialog
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import coil.load
-import coil.transform.CircleCropTransformation
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
+import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.tasks.Task
 import com.mansuetdev.bensuetstay.databinding.ActivityLandlordProfileBinding
 
-class LandlordProfileActivity : AppCompatActivity() {
+/** Settings screen shared by landlords and admins. */
+class LandlordProfileActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLandlordProfileBinding
-    private val auth = FirebaseAuth.getInstance()
-    private val storage = FirebaseStorage.getInstance()
+    private val isAdmin get() = Session.role == Role.ADMIN
 
-    private val pickImageLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            uploadProfilePicture(uri)
-        }
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        if (uri != null) uploadProfilePicture(uri)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!requireRole(Role.LANDLORD, Role.ADMIN)) return
         binding = ActivityLandlordProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Check if Admin or Landlord is logged in
-        val landlord = LandlordRepository.loggedInLandlord
-        val admin = AdminRepository.loggedInAdmin
-        val isAdmin = intent.getBooleanExtra("isAdmin", false) || (admin != null) 
-        
-        if (landlord == null && admin == null && !isAdmin) {
-            finish()
-            return
-        }
-
-        setupProfileInfo(isAdmin)
-        setupActions(isAdmin)
-
         binding.btnBack.setOnClickListener { finish() }
-
-        binding.btnLogout.setOnClickListener {
-            LandlordRepository.loggedInLandlord = null
-            AdminRepository.loggedInAdmin = null
-            auth.signOut()
-            val intent = Intent(this, WelcomeActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+        binding.btnLogout.setOnClickListener { Navigator.signOut(this) }
+        binding.fabEditPhoto.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.profile_picture))
+                .setItems(arrayOf(getString(R.string.choose_from_gallery), getString(R.string.remove_profile_picture))) { _, which ->
+                    if (which == 0) pickImage.launch("image/*") else removeProfilePicture()
+                }
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show()
         }
+        binding.btnPersonalInfo.setOnClickListener { showPersonalInfo() }
+        binding.btnLanguage.setOnClickListener { LanguagePicker.show(this) }
+        binding.btnChangePassword.setOnClickListener {
+            PasswordDialog.show(this, forced = false) {
+                Session.landlord?.let { landlord ->
+                    if (landlord.mustChangePassword) {
+                        LandlordRepository.markPasswordChanged(landlord.id)
+                        Session.setLandlord(landlord.copy(mustChangePassword = false))
+                    }
+                }
+            }
+        }
+        // Help Center opens the landlord FAQ (admins see the same page; admin setup is in the README)
+        binding.btnHelp.setOnClickListener { openInfo(InfoActivity.PAGE_FAQ_LANDLORD) }
     }
 
     override fun onResume() {
         super.onResume()
-        val isAdmin = intent.getBooleanExtra("isAdmin", false) || (AdminRepository.loggedInAdmin != null)
-        setupProfileInfo(isAdmin)
+        if (Session.role != null) setupProfileInfo()
     }
-    private fun setupProfileInfo(isAdmin: Boolean) {
-        val imageUrl: String?
+
+    private fun setupProfileInfo() {
+        SettingsSections.buildForStaff(this, binding.settingsSections)
+        binding.tvCurrentLanguage.text = LanguagePicker.currentName()
         val name: String
         val email: String
-
+        val imageUrl: String?
+        val fallback: Int
         if (isAdmin) {
-            val admin = AdminRepository.loggedInAdmin ?: return
-            name = admin.name
-            email = admin.email
-            imageUrl = admin.profileImageUri
-            binding.ivProfilePicture.setImageResource(R.drawable.ic_security) // Default icon
+            val admin = Session.admin ?: return
+            name = admin.name; email = admin.email; imageUrl = admin.profileImageUri; fallback = R.drawable.ic_security
         } else {
-            val landlord = LandlordRepository.loggedInLandlord ?: return
-            name = landlord.name
-            email = landlord.email
-            imageUrl = landlord.profileImageUri
-            binding.ivProfilePicture.setImageResource(R.drawable.ic_person) // Default icon
+            val landlord = Session.landlord ?: return
+            name = landlord.name; email = landlord.email; imageUrl = landlord.profileImageUri; fallback = R.drawable.ic_person
         }
-
         binding.tvProfileName.text = name
         binding.tvProfileEmail.text = email
-        binding.fabEditPhoto.visibility = android.view.View.VISIBLE
+        Images.load(binding.ivProfilePicture, imageUrl, fallback, circle = true)
+    }
 
-        if (!imageUrl.isNullOrEmpty()) {
-            binding.ivProfilePicture.load(imageUrl) {
-                crossfade(true)
-                placeholder(if (isAdmin) R.drawable.ic_security else R.drawable.ic_person)
-                error(if (isAdmin) R.drawable.ic_security else R.drawable.ic_person)
-                transformations(CircleCropTransformation())
+    private fun showPersonalInfo() {
+        val message = if (isAdmin) {
+            val a = Session.admin ?: return
+            getString(R.string.name_email_role_administrator, a.name, a.email)
+        } else {
+            val l = Session.landlord ?: return
+            getString(R.string.name_email_phone_to_change_these, l.name, l.email, l.phone.ifBlank { "\u2014" })
+        }
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(getString(R.string.personal_information))
+            .setMessage(message)
+            .setPositiveButton(android.R.string.ok, null)
+        if (!isAdmin) {
+            dialog.setNeutralButton(R.string.request_change) { _, _ ->
+                if (!emailSupport(getString(R.string.change_request_subject))) toast(getString(R.string.no_email_app))
             }
         }
-
+        dialog.show()
     }
 
-    private fun setupActions(isAdmin: Boolean) {
-        binding.fabEditPhoto.setOnClickListener {
-            val options = arrayOf("Choose from Gallery", "Remove Profile Picture", "Cancel")
-            AlertDialog.Builder(this)
-                .setTitle("Profile Picture")
-                .setItems(options) { dialog, which ->
-                    when (which) {
-                        0 -> pickImageLauncher.launch("image/*")
-                        1 -> removeProfilePicture(isAdmin)
-                        else -> dialog.dismiss()
-                    }
-                }
-                .show()
-        }
+    private fun saveImageUrl(uid: String, url: String?): Task<Void> =
+        if (isAdmin) AdminRepository.updateProfileImage(uid, url) else LandlordRepository.updateProfileImage(uid, url)
 
-        binding.btnPersonalInfo.setOnClickListener {
-            Toast.makeText(this, "Edit Personal Info clicked", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.btnChangePassword.setOnClickListener {
-            showChangePasswordDialog(isAdmin)
-        }
-
-        binding.btnHelp.setOnClickListener {
-            Toast.makeText(this, "Help Center coming soon", Toast.LENGTH_SHORT).show()
-        }
-    }
+    private fun currentUid(): String? = if (isAdmin) Session.admin?.id else Session.landlord?.id
 
     private fun uploadProfilePicture(uri: Uri) {
-        val isAdmin = intent.getBooleanExtra("isAdmin", false) || (AdminRepository.loggedInAdmin != null)
-        val uid = if (isAdmin) AdminRepository.loggedInAdmin?.id else LandlordRepository.loggedInLandlord?.id
-        
-        if (uid == null) return
-        
-        val folder = if (isAdmin) "admin_profiles" else "landlord_profiles"
-        val ref = storage.reference.child("$folder/$uid.jpg")
-
-        Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show()
-
-        ref.putFile(uri).addOnSuccessListener {
-            ref.downloadUrl.addOnSuccessListener { downloadUri ->
-                updateProfileImage(downloadUri.toString(), isAdmin)
+        val uid = currentUid() ?: return
+        toast(getString(R.string.uploading))
+        ProfilePhoto.upload(this, uid, uri)
+            .continueWithTask { t ->
+                if (!t.isSuccessful) throw t.exception ?: IllegalStateException("Upload failed")
+                val url = t.result
+                saveImageUrl(uid, url).continueWith { url }
             }
-        }.addOnFailureListener { e ->
-            Toast.makeText(this, "Upload failed: ${e.message}", Toast.LENGTH_SHORT).show()
-        }
+            .addOnSuccessListener { url -> updateLocal(url); toast(getString(R.string.profile_picture_updated)) }
+            .addOnFailureListener { e -> toast(AuthErrors.message(this, e), long = true) }
     }
 
-    private fun removeProfilePicture(isAdmin: Boolean) {
-        val uid = if (isAdmin) AdminRepository.loggedInAdmin?.id else LandlordRepository.loggedInLandlord?.id
-        if (uid == null) return
-        
-        val folder = if (isAdmin) "admin_profiles" else "landlord_profiles"
-        val ref = storage.reference.child("$folder/$uid.jpg")
-        
-        ref.delete().addOnCompleteListener {
-            updateProfileImage(null, isAdmin)
-        }
+    private fun removeProfilePicture() {
+        val uid = currentUid() ?: return
+        ProfilePhoto.delete(uid)
+            .continueWithTask { saveImageUrl(uid, null) }
+            .addOnSuccessListener { updateLocal(null); toast(getString(R.string.profile_picture_removed)) }
+            .addOnFailureListener { e -> toast(AuthErrors.message(this, e), long = true) }
     }
 
-    private fun updateProfileImage(uriString: String?, isAdmin: Boolean) {
-        if (isAdmin) {
-            val admin = AdminRepository.loggedInAdmin ?: return
-            val updated = admin.copy(profileImageUri = uriString)
-            AdminRepository.updateAdmin(updated)
-            AdminRepository.loggedInAdmin = updated
-        } else {
-            val landlord = LandlordRepository.loggedInLandlord ?: return
-            val updated = landlord.copy(profileImageUri = uriString)
-            LandlordRepository.updateLandlord(updated)
-            LandlordRepository.loggedInLandlord = updated
-        }
-        setupProfileInfo(isAdmin)
-        Toast.makeText(this, "Profile updated", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showChangePasswordDialog(isAdmin: Boolean) {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_change_password, null)
-        val etNewPassword = dialogView.findViewById<android.widget.EditText>(R.id.etNewPassword)
-        
-        AlertDialog.Builder(this)
-            .setTitle("Change Password")
-            .setView(dialogView)
-            .setPositiveButton("Update") { _, _ ->
-                val newPassword = etNewPassword.text.toString().trim()
-                if (newPassword.isNotEmpty()) {
-                    if (isAdmin) {
-                        val current = AdminRepository.loggedInAdmin
-                        if (current != null) {
-                            val updated = current.copy(password = newPassword)
-                            AdminRepository.updateAdmin(updated)
-                            AdminRepository.loggedInAdmin = updated
-                            Toast.makeText(this, "Admin password updated", Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        val current = LandlordRepository.loggedInLandlord
-                        if (current != null) {
-                            val updated = current.copy(password = newPassword, mustChangePassword = false)
-                            LandlordRepository.updateLandlord(updated)
-                            LandlordRepository.loggedInLandlord = updated
-                            Toast.makeText(this, "Password updated successfully", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
+    private fun updateLocal(url: String?) {
+        if (isAdmin) Session.admin?.let { Session.setAdmin(it.copy(profileImageUri = url)) }
+        else Session.landlord?.let { Session.setLandlord(it.copy(profileImageUri = url)) }
+        setupProfileInfo()
     }
 }

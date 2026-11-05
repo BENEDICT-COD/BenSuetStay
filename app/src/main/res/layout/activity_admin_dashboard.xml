@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin Control Center"
+            android:text="@string/admin_control_center"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Platform overview and management"
+            android:text="@string/platform_overview_and_management"
             android:textSize="13sp"
             android:textColor="@color/text_muted" />
     </LinearLayout>
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="10dp"
-                android:text="Quick Actions"
+                android:text="@string/quick_actions"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -123,7 +123,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_apartment"
                     app:tint="@color/brand_blue"
-                    android:contentDescription="Manage listings" />
+                    android:contentDescription="@string/manage_listings" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -135,7 +135,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Manage Listings"
+                        android:text="@string/manage_listings_2"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -143,7 +143,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Create, view, or remove landlord accounts"
+                        android:text="@string/create_edit_or_remove_accommodation_listings"
                         android:textSize="12sp"
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
@@ -153,7 +153,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_forward"
                     app:tint="@color/text_muted"
-                    android:contentDescription="Open" />
+                    android:contentDescription="@string/open" />
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +172,7 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_group"
                     app:tint="@color/brand_blue"
-                    android:contentDescription="Manage landlords" />
+                    android:contentDescription="@string/manage_landlords" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -184,7 +184,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Manage Landlords"
+                        android:text="@string/manage_landlords_2"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -192,7 +192,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Approve new accounts, view all landlords"
+                        android:text="@string/create_landlord_accounts_send_password_resets"
                         android:textSize="12sp"
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
@@ -202,7 +202,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_forward"
                     app:tint="@color/text_muted"
-                    android:contentDescription="Open" />
+                    android:contentDescription="@string/open" />
             </LinearLayout>
 
         </LinearLayout>

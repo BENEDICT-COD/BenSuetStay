@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,13 +24,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -49,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:text="BenSuet Stay"
+                android:text="@string/bensuet_stay"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_blue" />
@@ -60,7 +62,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="32dp"
                 android:gravity="center"
-                android:text="Welcome back!"
+                android:text="@string/welcome_back"
                 android:textSize="15sp"
                 android:textColor="@color/text_muted" />
 
@@ -68,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Email or Phone Number"
+                android:text="@string/email"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -81,7 +83,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="you@email.com"
+                android:hint="@string/you_email_com"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textEmailAddress"
@@ -91,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Password"
+                android:text="@string/password"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -109,7 +111,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="48dp"
                     android:background="@android:color/transparent"
-                    android:hint="Enter password"
+                    android:hint="@string/enter_password"
                     android:textColorHint="@color/text_placeholder"
                     android:textColor="@color/text_primary"
                     android:inputType="textPassword"
@@ -123,7 +125,7 @@
                     android:layout_marginEnd="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_visibility"
-                    android:contentDescription="Show password" />
+                    android:contentDescription="@string/show_password" />
             </FrameLayout>
 
             <TextView
@@ -132,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:gravity="end"
-                android:text="Forgot password?"
+                android:text="@string/forgot_password_2"
                 android:textSize="13sp"
                 android:textColor="@color/brand_blue"
                 android:clickable="true"
@@ -143,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                android:text="Log In"
+                tools:text="Log In"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"
@@ -171,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginEnd="12dp"
-                    android:text="or"
+                    android:text="@string/or"
                     android:textSize="13sp"
                     android:textColor="@color/text_muted" />
 
@@ -183,11 +185,27 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_button_outlined"
+                android:clickable="true"
+                android:drawablePadding="12dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/continue_with_google"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_google" />
+
+            <TextView
                 android:id="@+id/btnContinueAsGuest"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                android:text="Continue as guest"
+                android:text="@string/continue_as_guest"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_blue"

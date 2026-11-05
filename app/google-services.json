@@ -12,7 +12,20 @@
           "package_name": "com.mansuetdev.bensuetstay"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "52178379349-il0epfjrd1ieo5sd7alio9oa806st9e5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mansuetdev.bensuetstay",
+            "certificate_hash": "9577041c86643df6d5dcfdad8cd941cad3eeb792"
+          }
+        },
+        {
+          "client_id": "52178379349-oha32r1i64lecfr5fl8e9lpu4sta04uk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA3TY1VPTfZVNflxWeP6Yu1oz2dHwEr5o8"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52178379349-oha32r1i64lecfr5fl8e9lpu4sta04uk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
