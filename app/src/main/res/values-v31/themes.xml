@@ -1,5 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+<<<<<<< HEAD
     <style name="Base.Theme.BenSuetStay" parent="Theme.Material3.Light.NoActionBar">
+=======
+    <style name="Base.Theme.BenSuetStay" parent="Theme.Material3.DayNight.NoActionBar">
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         <item name="android:windowSplashScreenBackground">#123DAD</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
         <item name="android:windowSplashScreenIconBackgroundColor">#123DAD</item>

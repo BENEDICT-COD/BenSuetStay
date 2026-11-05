@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">BenSuet Stay</string>
@@ -466,3 +467,11 @@
     <string name="faq_l_a3">One space is taken off that room type automatically, and the student sees your note under My Applications.</string>
     <string name="support_email" translatable="false">mpilonhle@mansuetdev.tech</string>
 </resources>
+=======
+<resources>
+    <string name="app_name">BenSuet Stay</string>
+    <string name="accommodations_found">%1$d accommodations found</string>
+    <string name="spaces_available">%1$d spaces available</string>
+    <string name="profile">Profile</string>
+</resources>
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

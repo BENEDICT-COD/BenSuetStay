@@ -13,21 +13,38 @@ class LandlordAdapter(
 
     class ViewHolder(val binding: ItemLandlordBinding) : RecyclerView.ViewHolder(binding.root)
 
+<<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemLandlordBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val landlord = landlords[position]
         val context = holder.itemView.context
+=======
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemLandlordBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val landlord = landlords[position]
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         holder.binding.apply {
             tvLandlordName.text = landlord.name
             tvLandlordEmail.text = landlord.email
             tvLandlordPhone.text = landlord.phone
+<<<<<<< HEAD
             // Counted from the live listings rather than a stored number that can drift
             val count = ListingRepository.listingsForLandlord(landlord.id).size
             val status = if (landlord.mustChangePassword) context.getString(R.string.hasn_t_logged_in_yet) else ""
             tvListingsCount.text = "$count listing(s)$status"
             btnResetPassword.contentDescription = context.getString(R.string.send_password_reset_email)
+=======
+            tvListingsCount.text = "${landlord.listingsCount} listing(s)"
+
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             btnResetPassword.setOnClickListener { onResetPassword(landlord) }
             btnDeleteLandlord.setOnClickListener { onDelete(landlord) }
         }
@@ -36,7 +53,14 @@ class LandlordAdapter(
     override fun getItemCount() = landlords.size
 
     fun updateList(newList: List<LandlordAccount>) {
+<<<<<<< HEAD
         landlords = newList.toList()
         notifyDataSetChanged()
     }
 }
+=======
+        landlords = newList
+        notifyDataSetChanged()
+    }
+}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +17,11 @@
         android:layout_height="40dp"
         android:background="@drawable/bg_button_outlined"
         android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
         android:contentDescription="@string/back" />
+=======
+        android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,7 +37,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/registration"
+=======
+                android:text="Registration"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -40,7 +51,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+<<<<<<< HEAD
                 tools:text="Residence Name"
+=======
+                android:text="Residence Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textColor="@color/brand_blue" />
 
@@ -48,7 +63,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/next_of_kin_details"
+=======
+                android:text="Next of Kin Details"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -59,7 +78,11 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input_field"
+<<<<<<< HEAD
                 android:hint="@string/full_name"
+=======
+                android:hint="Full Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="textPersonName" />
@@ -70,7 +93,11 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_input_field"
+<<<<<<< HEAD
                 android:hint="@string/phone_number"
+=======
+                android:hint="Phone Number"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="phone" />
@@ -79,7 +106,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/room_selection"
+=======
+                android:text="Room Selection"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -93,14 +124,22 @@
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 tools:text="Room Type"
+=======
+                android:text="Room Type"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="@color/text_primary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/required_documents"
+=======
+                android:text="Required Documents"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -127,7 +166,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+<<<<<<< HEAD
                     android:text="@string/upload_id_copy"
+=======
+                    android:text="Upload ID Copy"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColor="@color/brand_blue" />
             </LinearLayout>
 
@@ -153,7 +196,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+<<<<<<< HEAD
                     android:text="@string/upload_proof_of_registration"
+=======
+                    android:text="Upload Proof of Registration"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColor="@color/brand_blue" />
             </LinearLayout>
 
@@ -166,7 +213,11 @@
         android:layout_height="56dp"
         android:background="@drawable/bg_button_primary"
         android:gravity="center"
+<<<<<<< HEAD
         android:text="@string/submit_registration"
+=======
+        android:text="Submit Registration"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:textColor="@color/surface_white"
         android:textSize="16sp"
         android:textStyle="bold" />

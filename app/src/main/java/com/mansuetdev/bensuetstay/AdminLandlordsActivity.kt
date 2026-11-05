@@ -1,5 +1,6 @@
 package com.mansuetdev.bensuetstay
 
+<<<<<<< HEAD
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,22 @@ class AdminLandlordsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!requireRole(Role.ADMIN)) return
+=======
+import android.app.AlertDialog
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.mansuetdev.bensuetstay.databinding.ActivityAdminLandlordsBinding
+
+class AdminLandlordsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityAdminLandlordsBinding
+    private lateinit var adapter: LandlordAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         binding = ActivityAdminLandlordsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -24,7 +41,11 @@ class AdminLandlordsActivity : BaseActivity() {
         }
 
         adapter = LandlordAdapter(
+<<<<<<< HEAD
             landlords = emptyList(),
+=======
+            landlords = LandlordRepository.landlords,
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             onDelete = { landlord -> confirmDelete(landlord) },
             onResetPassword = { landlord -> confirmReset(landlord) }
         )
@@ -32,6 +53,7 @@ class AdminLandlordsActivity : BaseActivity() {
         binding.recyclerLandlords.adapter = adapter
     }
 
+<<<<<<< HEAD
     override fun onStart() {
         super.onStart()
         ListingRepository.addListener(listingListener)
@@ -74,3 +96,37 @@ class AdminLandlordsActivity : BaseActivity() {
         }
     }
 }
+=======
+    override fun onResume() {
+        super.onResume()
+        // Refresh in case a new landlord was added on the previous screen
+        adapter.updateList(LandlordRepository.landlords)
+    }
+
+    private fun confirmDelete(landlord: LandlordAccount) {
+        // AlertDialog pauses the app and asks the user to confirm before we
+        // do something we can't undo, like deleting an account.
+        AlertDialog.Builder(this)
+            .setTitle("Delete landlord?")
+            .setMessage("This will remove ${landlord.name}'s account. This can't be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                LandlordRepository.deleteLandlord(landlord.id)
+                adapter.updateList(LandlordRepository.landlords)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun confirmReset(landlord: LandlordAccount) {
+        AlertDialog.Builder(this)
+            .setTitle("Reset Password?")
+            .setMessage("Reset ${landlord.name}'s password to 'Stay@2025'? They will be forced to change it on login.")
+            .setPositiveButton("Reset") { _, _ ->
+                LandlordRepository.resetPassword(landlord.id)
+                adapter.updateList(LandlordRepository.landlords)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

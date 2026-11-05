@@ -48,5 +48,9 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_delete"
         app:tint="@color/accent_red"
+<<<<<<< HEAD
         android:contentDescription="@string/remove_room" />
+=======
+        android:contentDescription="Remove room" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 </LinearLayout>

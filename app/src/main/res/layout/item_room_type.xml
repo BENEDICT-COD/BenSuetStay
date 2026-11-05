@@ -14,7 +14,11 @@
         android:layout_height="56dp"
         android:background="@drawable/bg_image_placeholder"
         android:scaleType="centerCrop"
+<<<<<<< HEAD
         android:contentDescription="@string/room_photo" />
+=======
+        android:contentDescription="Room photo" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     <LinearLayout
         android:layout_width="0dp"

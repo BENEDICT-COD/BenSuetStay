@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,14 +26,22 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
             android:contentDescription="@string/back" />
+=======
+            android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         <TextView
             android:id="@+id/tvScreenTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+<<<<<<< HEAD
             tools:text="Add Listing"
+=======
+            android:text="Add Listing"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -50,7 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/accommodation_name"
+=======
+                android:text="Accommodation Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -63,7 +78,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/e_g_varsity_heights_residence"
+=======
+                android:hint="e.g. Varsity Heights Residence"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:singleLine="true" />
@@ -72,7 +91,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/location"
+=======
+                android:text="Location"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -85,7 +108,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/e_g_braamfontein_johannesburg"
+=======
+                android:hint="e.g. Braamfontein, Johannesburg"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:singleLine="true" />
@@ -94,7 +121,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/campus_es_served"
+=======
+                android:text="Campus(es) Served"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -107,7 +138,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/e_g_wits_university_uj_auckland"
+=======
+                android:hint="e.g. Wits University"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:singleLine="true" />
@@ -116,7 +151,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/description"
+=======
+                android:text="Description"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -128,7 +167,11 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_input_field"
                 android:padding="16dp"
+<<<<<<< HEAD
                 android:hint="@string/tell_students_about_the_property"
+=======
+                android:hint="Tell students about the property..."
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:minLines="3"
@@ -138,7 +181,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+<<<<<<< HEAD
                 android:text="@string/additional_features"
+=======
+                android:text="Additional Features"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -147,28 +194,44 @@
                 android:id="@+id/cbTransport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="@string/transport_included"
+=======
+                android:text="Transport Included"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:layout_marginBottom="8dp" />
 
             <CheckBox
                 android:id="@+id/cbFurnished"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="@string/fully_furnished"
+=======
+                android:text="Fully Furnished"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:layout_marginBottom="8dp" />
 
             <CheckBox
                 android:id="@+id/cbPrepaidElectricity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="@string/prepaid_electricity"
+=======
+                android:text="Prepaid Electricity"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:layout_marginBottom="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+<<<<<<< HEAD
                 android:text="@string/amenities"
+=======
+                android:text="Amenities"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -184,7 +247,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/assign_landlord"
+=======
+                android:text="Assign Landlord"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -208,7 +275,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+<<<<<<< HEAD
                 android:text="@string/room_types_pricing"
+=======
+                android:text="Room Types &amp; Pricing"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -261,8 +332,12 @@
                     android:background="@drawable/bg_input_field"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
+<<<<<<< HEAD
                     android:hint="@string/monthly_rent_in_rand_e_g"
                     android:inputType="number"
+=======
+                    android:hint="e.g. R2 500/mo"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColorHint="@color/text_placeholder"
                     android:textSize="13sp"
                     android:singleLine="true" />
@@ -275,7 +350,11 @@
                     android:background="@drawable/bg_input_field"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
+<<<<<<< HEAD
                     android:hint="@string/spaces_available_2"
+=======
+                    android:hint="Spaces available"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColorHint="@color/text_placeholder"
                     android:textSize="13sp"
                     android:inputType="number"
@@ -288,7 +367,11 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+<<<<<<< HEAD
                 android:text="@string/set_room_photo"
+=======
+                android:text="Set Room Photo"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="12sp"
                 android:textColor="@color/brand_blue"
                 android:background="@drawable/bg_input_field"
@@ -300,7 +383,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+<<<<<<< HEAD
                 tools:text="No room photo selected"
+=======
+                android:text="No room photo selected"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="11sp"
                 android:textColor="@color/text_muted"
                 android:visibility="gone" />
@@ -311,7 +398,11 @@
                 android:layout_height="46dp"
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
+<<<<<<< HEAD
                 android:text="@string/add_room_type"
+=======
+                android:text="+ Add Room Type"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_blue"
@@ -329,7 +420,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+<<<<<<< HEAD
                 android:text="@string/photos_videos"
+=======
+                android:text="Photos &amp; Videos"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -347,7 +442,11 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="6dp"
                     android:gravity="center"
+<<<<<<< HEAD
                     android:text="@string/add_photos"
+=======
+                    android:text="Add Photos"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:textColor="@color/brand_blue"
@@ -361,7 +460,11 @@
                     android:layout_height="48dp"
                     android:layout_weight="1"
                     android:gravity="center"
+<<<<<<< HEAD
                     android:text="@string/add_video"
+=======
+                    android:text="Add Video"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:textColor="@color/brand_blue"
@@ -375,7 +478,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
+<<<<<<< HEAD
                 tools:text="No photos or videos selected yet"
+=======
+                android:text="No photos or videos selected yet"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="12sp"
                 android:textColor="@color/text_muted" />
 
@@ -384,7 +491,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
+<<<<<<< HEAD
                 tools:text="Save Listing"
+=======
+                android:text="Save Listing"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

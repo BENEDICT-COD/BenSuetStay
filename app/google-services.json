@@ -12,6 +12,7 @@
           "package_name": "com.mansuetdev.bensuetstay"
         }
       },
+<<<<<<< HEAD
       "oauth_client": [
         {
           "client_id": "52178379349-il0epfjrd1ieo5sd7alio9oa806st9e5.apps.googleusercontent.com",
@@ -29,19 +30,33 @@
       "api_key": [
         {
           "current_key": "AIzaSyA3TY1VPTfZVNflxWeP6Yu1oz2dHwEr5o8"
+=======
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "api key"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         }
       ],
       "services": {
         "appinvite_service": {
+<<<<<<< HEAD
           "other_platform_oauth_client": [
             {
               "client_id": "52178379349-oha32r1i64lecfr5fl8e9lpu4sta04uk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+=======
+          "other_platform_oauth_client": []
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         }
       }
     }
   ],
   "configuration_version": "1"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

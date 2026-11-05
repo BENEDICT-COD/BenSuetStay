@@ -137,10 +137,10 @@
 
             <!-- Email or Phone -->
             <TextView
+                android:id="@+id/tvEmailLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:id="@+id/tvEmailLabel"
                 android:text="@string/email"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -162,10 +162,10 @@
 
             <!-- Password -->
             <TextView
+                android:id="@+id/tvPasswordLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:id="@+id/tvPasswordLabel"
                 android:text="@string/password"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -253,7 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                tools:text="Create Account"
+                android:text="@string/create_account"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

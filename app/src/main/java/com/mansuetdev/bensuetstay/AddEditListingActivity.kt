@@ -1,9 +1,14 @@
 package com.mansuetdev.bensuetstay
 
+<<<<<<< HEAD
+=======
+import com.google.firebase.firestore.FirebaseFirestore
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+<<<<<<< HEAD
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -73,25 +78,118 @@ class AddEditListingActivity : BaseActivity() {
             contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
         } catch (e: SecurityException) {
             // This provider doesn't offer lasting access; the file still shows until the app restarts
+=======
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.chip.Chip
+import com.mansuetdev.bensuetstay.databinding.ActivityAddEditListingBinding
+import com.mansuetdev.bensuetstay.databinding.ItemRoomConfigRowBinding
+import java.util.UUID
+
+class AddEditListingActivity : AppCompatActivity() {
+    private val firestore = FirebaseFirestore.getInstance()
+    private lateinit var binding: ActivityAddEditListingBinding
+
+    private var editingListingId: String? = null
+    private val roomConfigs = mutableListOf<RoomConfig>()
+    private val selectedPhotoUris = mutableListOf<Uri>()
+    private var selectedVideoUri: Uri? = null
+    private var tempRoomImageUri: Uri? = null
+
+    private val amenityOptions = listOf("WiFi", "Security", "Meals", "Water incl.")
+    private val roomTypeOptions = listOf("Single", "2-Sharing", "3-Sharing", "4-Sharing")
+    private val fundingOptions = listOf("NSFAS", "Self Funded")
+
+    private val pickPhotos = registerForActivityResult(
+        ActivityResultContracts.OpenMultipleDocuments()
+    ) { uris ->
+        selectedPhotoUris.clear()
+        if (uris != null) {
+            for (uri in uris) {
+                try {
+                    contentResolver.takePersistableUriPermission(
+                        uri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    )
+                } catch (e: Exception) {
+                    // Fallback if not persistable
+                }
+                selectedPhotoUris.add(uri)
+            }
+        }
+        updateMediaSummary()
+    }
+
+    private val pickVideo = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) {
+            try {
+                contentResolver.takePersistableUriPermission(
+                    uri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            } catch (e: Exception) {
+                // Fallback
+            }
+            selectedVideoUri = uri
+        }
+        updateMediaSummary()
+    }
+
+    private val pickRoomImage = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) {
+            try {
+                contentResolver.takePersistableUriPermission(
+                    uri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            } catch (e: Exception) {
+                // Fallback
+            }
+            tempRoomImageUri = uri
+            binding.tvRoomImageSummary.visibility = android.view.View.VISIBLE
+            binding.tvRoomImageSummary.text = "Photo selected"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+<<<<<<< HEAD
         if (!requireRole(Role.ADMIN)) return
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         binding = ActivityAddEditListingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnBack.setOnClickListener { finish() }
+<<<<<<< HEAD
         setupAmenityChips()
         setupRoomSpinners()
         updateMediaSummary()
+=======
+
+        setupAmenityChips()
+        setupSpinners()
+
+        editingListingId = intent.getStringExtra("listing_id")
+        if (editingListingId != null) {
+            binding.tvScreenTitle.text = "Edit Listing"
+            loadExistingListing(editingListingId!!)
+        }
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         binding.btnAddRoom.setOnClickListener { addRoomConfig() }
         binding.btnAddRoomImage.setOnClickListener { pickRoomImage.launch(arrayOf("image/*")) }
         binding.btnAddPhotos.setOnClickListener { pickPhotos.launch(arrayOf("image/*")) }
         binding.btnAddVideo.setOnClickListener { pickVideo.launch(arrayOf("video/*")) }
         binding.btnSaveListing.setOnClickListener { saveListing() }
+<<<<<<< HEAD
 
         editingId = intent.getStringExtra(EXTRA_LISTING_ID)
         val id = editingId
@@ -124,10 +222,13 @@ class AddEditListingActivity : BaseActivity() {
     private fun selectAssignedLandlord() {
         val index = landlords.indexOfFirst { it.id == assignedLandlordId }
         if (index >= 0 && binding.spinnerLandlord.adapter != null) binding.spinnerLandlord.setSelection(index + 1)
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 
     private fun setupAmenityChips() {
         binding.chipGroupAmenities.removeAllViews()
+<<<<<<< HEAD
         Labels.AMENITIES.forEach { (stored, label) ->
             binding.chipGroupAmenities.addView(Chip(this).apply {
                 text = getString(label)
@@ -150,10 +251,46 @@ class AddEditListingActivity : BaseActivity() {
                 binding.etRoomPrice.hint = if (nsfas) getString(R.string.covered_by_nsfas_allowance) else getString(R.string.monthly_rent_in_rand_e_g)
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+=======
+        amenityOptions.forEach { amenity ->
+            val chip = Chip(this).apply {
+                text = amenity
+                isCheckable = true
+            }
+            binding.chipGroupAmenities.addView(chip)
+        }
+    }
+
+    private fun setupSpinners() {
+        binding.spinnerLandlord.adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item,
+            LandlordRepository.landlords.filter { it.verified }.map { it.name }
+        )
+        binding.spinnerRoomType.adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, roomTypeOptions
+        )
+        binding.spinnerRoomFunding.adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_dropdown_item, fundingOptions
+        )
+
+        binding.spinnerRoomFunding.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                if (fundingOptions[position] == "NSFAS") {
+                    binding.etRoomPrice.setText("")
+                    binding.etRoomPrice.isEnabled = false
+                    binding.etRoomPrice.hint = "No amount required"
+                } else {
+                    binding.etRoomPrice.isEnabled = true
+                    binding.etRoomPrice.hint = "e.g. R2 500/mo"
+                }
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         }
     }
 
     private fun addRoomConfig() {
+<<<<<<< HEAD
         val roomType = roomTypeOptions.getOrNull(binding.spinnerRoomType.selectedItemPosition) ?: return
         val funding = fundingOptions.getOrNull(binding.spinnerRoomFunding.selectedItemPosition) ?: return
         val price = binding.etRoomPrice.text.toString().trim().toIntOrNull() ?: 0
@@ -187,11 +324,34 @@ class AddEditListingActivity : BaseActivity() {
         binding.etRoomSpaces.text.clear()
         pendingRoomImage = null
         binding.tvRoomImageSummary.visibility = View.GONE
+=======
+        val roomType = binding.spinnerRoomType.selectedItem?.toString() ?: return
+        val fundingLabel = binding.spinnerRoomFunding.selectedItem?.toString() ?: return
+        val price = if (fundingLabel == "NSFAS") "NSFAS Allowance" else binding.etRoomPrice.text.toString().trim()
+        val spacesText = binding.etRoomSpaces.text.toString().trim()
+
+        if ((fundingLabel != "NSFAS" && price.isEmpty()) || spacesText.isEmpty()) {
+            Toast.makeText(this, "Enter room details and spaces first", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val funding = if (fundingLabel == "NSFAS") FundingType.NSFAS else FundingType.SELF_OR_BURSARY
+        val spaces = spacesText.toIntOrNull() ?: 0
+
+        roomConfigs.add(RoomConfig(roomType, funding, price, spaces, tempRoomImageUri?.toString()))
+        refreshRoomConfigViews()
+
+        binding.etRoomPrice.text.clear()
+        binding.etRoomSpaces.text.clear()
+        tempRoomImageUri = null
+        binding.tvRoomImageSummary.visibility = android.view.View.GONE
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 
     private fun refreshRoomConfigViews() {
         binding.roomConfigContainer.removeAllViews()
         roomConfigs.forEachIndexed { index, config ->
+<<<<<<< HEAD
             val row = ItemRoomConfigRowBinding.inflate(LayoutInflater.from(this), binding.roomConfigContainer, false)
             row.tvRoomTypeLabel.text = Labels.roomType(this, config.roomType)
             if (config.imageUrl != null) {
@@ -206,6 +366,25 @@ class AddEditListingActivity : BaseActivity() {
             } else {
                 getString(R.string.spaces_2, fundingLabel, Labels.roomPrice(this, config), config.spacesAvailable)
             }
+=======
+            val row = ItemRoomConfigRowBinding.inflate(
+                LayoutInflater.from(this), binding.roomConfigContainer, false
+            )
+            val fundingLabel = if (config.fundingType == FundingType.NSFAS) "NSFAS" else "Self Funded"
+            row.tvRoomTypeLabel.text = config.roomType
+            if (config.imageUrl != null) {
+                row.ivRoomPreview.visibility = android.view.View.VISIBLE
+                row.ivRoomPreview.setImageURI(Uri.parse(config.imageUrl))
+            } else {
+                row.ivRoomPreview.visibility = android.view.View.GONE
+            }
+            val detailsText = if (config.fundingType == FundingType.NSFAS) {
+                "$fundingLabel \u00b7 ${config.spacesAvailable} spaces"
+            } else {
+                "$fundingLabel \u00b7 ${config.price} \u00b7 ${config.spacesAvailable} spaces"
+            }
+            row.tvRoomDetails.text = detailsText
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             row.btnRemoveRoom.setOnClickListener {
                 roomConfigs.removeAt(index)
                 refreshRoomConfigViews()
@@ -215,45 +394,82 @@ class AddEditListingActivity : BaseActivity() {
     }
 
     private fun updateMediaSummary() {
+<<<<<<< HEAD
         val photoText = if (photoUris.isEmpty()) getString(R.string.no_photos) else getString(R.string.photo_s_selected, photoUris.size)
         val videoText = if (videoUri.isNullOrBlank()) getString(R.string.no_video) else getString(R.string.n_1_video_selected)
         binding.tvMediaSummary.text = "$photoText \u00b7 $videoText"
     }
 
     private fun fillForm(listing: AdminListing) {
+=======
+        binding.tvMediaSummary.text =
+            "${selectedPhotoUris.size} photo(s) selected \u00b7 ${if (selectedVideoUri != null) "1 video" else "0 videos"} selected"
+    }
+
+    private fun loadExistingListing(id: String) {
+        val listing = ListingRepository.findById(id) ?: return
+
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         binding.etName.setText(listing.name)
         binding.etLocation.setText(listing.location)
         binding.etCampus.setText(listing.campusesServed)
         binding.etDescription.setText(listing.description)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         binding.cbTransport.isChecked = listing.hasTransport
         binding.cbFurnished.isChecked = listing.isFurnished
         binding.cbPrepaidElectricity.isChecked = listing.isPrepaidElectricity
 
         for (i in 0 until binding.chipGroupAmenities.childCount) {
             val chip = binding.chipGroupAmenities.getChildAt(i) as Chip
+<<<<<<< HEAD
             chip.isChecked = listing.amenities.contains(chip.tag as? String)
         }
 
         assignedLandlordId = listing.assignedLandlordId
         selectAssignedLandlord()
+=======
+            chip.isChecked = listing.amenities.contains(chip.text.toString())
+        }
+
+        val landlordIndex = LandlordRepository.landlords
+            .filter { it.verified }
+            .indexOfFirst { it.id == listing.assignedLandlordId }
+        if (landlordIndex != -1) binding.spinnerLandlord.setSelection(landlordIndex)
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         roomConfigs.clear()
         roomConfigs.addAll(listing.rooms)
         refreshRoomConfigViews()
 
+<<<<<<< HEAD
         photoUris.clear()
         photoUris.addAll(listing.photoUris)
         videoUri = listing.videoUri.ifBlank { null }
+=======
+        binding.tvMediaSummary.text =
+            "${listing.photoCount} photo(s) already uploaded \u00b7 ${listing.videoCount} video(s) already uploaded"
+
+        selectedPhotoUris.clear()
+        listing.photoUris.forEach { selectedPhotoUris.add(Uri.parse(it)) }
+        selectedVideoUri = if (listing.videoUri.isNotEmpty()) Uri.parse(listing.videoUri) else null
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         updateMediaSummary()
     }
 
     private fun saveListing() {
+<<<<<<< HEAD
         if (saving) return
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         val name = binding.etName.text.toString().trim()
         val location = binding.etLocation.text.toString().trim()
         val campus = binding.etCampus.text.toString().trim()
         val description = binding.etDescription.text.toString().trim()
 
+<<<<<<< HEAD
         when {
             name.isEmpty() -> { binding.etName.error = getString(R.string.required); return }
             location.isEmpty() -> { binding.etLocation.error = getString(R.string.required); return }
@@ -283,10 +499,42 @@ class AddEditListingActivity : BaseActivity() {
             assignedLandlordName = landlord?.name,
             assignedLandlordPhone = landlord?.phone,
             rooms = roomConfigs.toList(),
+=======
+        if (name.isEmpty() || location.isEmpty() || campus.isEmpty()) {
+            Toast.makeText(this, "Please fill in name, location, and campus", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (roomConfigs.isEmpty()) {
+            Toast.makeText(this, "Add at least one room type", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val selectedAmenities = mutableListOf<String>()
+        for (i in 0 until binding.chipGroupAmenities.childCount) {
+            val chip = binding.chipGroupAmenities.getChildAt(i) as Chip
+            if (chip.isChecked) selectedAmenities.add(chip.text.toString())
+        }
+
+        val verifiedLandlords = LandlordRepository.landlords.filter { it.verified }
+        val selectedLandlord = verifiedLandlords.getOrNull(binding.spinnerLandlord.selectedItemPosition)
+
+        val listing = AdminListing(
+            id = editingListingId ?: UUID.randomUUID().toString(),
+            name = name,
+            location = location,
+            campusesServed = campus,
+            amenities = selectedAmenities,
+            assignedLandlordId = selectedLandlord?.id,
+            assignedLandlordName = selectedLandlord?.name,
+            rooms = roomConfigs.toList(),
+            photoCount = selectedPhotoUris.size,
+            videoCount = if (selectedVideoUri != null) 1 else 0,
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             description = description,
             hasTransport = binding.cbTransport.isChecked,
             isFurnished = binding.cbFurnished.isChecked,
             isPrepaidElectricity = binding.cbPrepaidElectricity.isChecked,
+<<<<<<< HEAD
             photoUris = photoUris.toList(),
             videoUri = videoUri.orEmpty()
         )
@@ -318,3 +566,33 @@ class AddEditListingActivity : BaseActivity() {
         binding.btnSaveListing.text = text
     }
 }
+=======
+            photoUris = selectedPhotoUris.map { it.toString() },
+            videoUri = selectedVideoUri?.toString() ?: ""
+        )
+
+        binding.btnSaveListing.isEnabled = false
+        binding.btnSaveListing.text = "Saving\u2026"
+
+        firestore.collection("accommodations").document(listing.id)
+            .set(listing)
+            .addOnSuccessListener {
+                // Keep the local repository in sync too, so Manage Listings
+                // reflects the change immediately without waiting on a re-fetch.
+                if (editingListingId != null) {
+                    ListingRepository.updateListing(listing)
+                } else {
+                    ListingRepository.addListing(listing)
+                }
+                val message = if (editingListingId != null) "Listing updated" else "Listing created"
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .addOnFailureListener { e ->
+                binding.btnSaveListing.isEnabled = true
+                binding.btnSaveListing.text = "Save Listing"
+                Toast.makeText(this, "Failed to save: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+    }
+}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

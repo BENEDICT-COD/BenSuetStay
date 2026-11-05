@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,7 +38,11 @@
                     android:layout_margin="16dp"
                     android:background="@drawable/bg_button_outlined"
                     android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
                     android:contentDescription="@string/back" />
+=======
+                    android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,7 +53,11 @@
                     android:paddingEnd="10dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
+<<<<<<< HEAD
                     android:text="@string/building_common_areas"
+=======
+                    android:text="Building / Common areas"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="11sp"
                     android:textColor="@color/surface_white"
                     android:background="#99000000" />
@@ -95,7 +106,11 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_place"
                         app:tint="@color/text_muted"
+<<<<<<< HEAD
                         android:contentDescription="@string/location" />
+=======
+                        android:contentDescription="Location" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                     <TextView
                         android:id="@+id/tvLocation"
@@ -106,6 +121,7 @@
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
 
+<<<<<<< HEAD
                 <TextView
                     android:id="@+id/tvDistance"
                     android:layout_width="wrap_content"
@@ -117,6 +133,8 @@
                     android:visibility="gone"
                     tools:text="≈ 2.4 km from Wits University" />
 
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 <!-- Amenities -->
                 <LinearLayout
                     android:id="@+id/amenitiesContainer"
@@ -152,7 +170,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+<<<<<<< HEAD
                             tools:text="Transport Included"
+=======
+                            android:text="Transport Included"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -174,7 +196,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+<<<<<<< HEAD
                             tools:text="Fully Furnished"
+=======
+                            android:text="Fully Furnished"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -195,7 +221,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+<<<<<<< HEAD
                             tools:text="Prepaid Electricity"
+=======
+                            android:text="Prepaid Electricity"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -206,7 +236,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+<<<<<<< HEAD
                     android:text="@string/description"
+=======
+                    android:text="Description"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -225,7 +259,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+<<<<<<< HEAD
                     android:text="@string/location_map"
+=======
+                    android:text="Location Map"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -242,7 +280,11 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_map_placeholder"
+<<<<<<< HEAD
                         android:contentDescription="@string/map_location" />
+=======
+                        android:contentDescription="Map Location" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -270,7 +312,11 @@
                         android:layout_height="20dp"
                         android:src="@drawable/ic_call"
                         app:tint="@color/brand_blue"
+<<<<<<< HEAD
                         android:contentDescription="@string/phone" />
+=======
+                        android:contentDescription="Phone" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -282,7 +328,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+<<<<<<< HEAD
                             android:text="@string/contact_landlord"
+=======
+                            android:text="Contact landlord"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textSize="11sp"
                             android:textColor="@color/text_muted" />
 
@@ -303,7 +353,11 @@
                         android:paddingEnd="20dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp"
+<<<<<<< HEAD
                         android:text="@string/call"
+=======
+                        android:text="Call"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/surface_white"
@@ -325,7 +379,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+<<<<<<< HEAD
                         android:text="@string/select_a_room_type"
+=======
+                        android:text="Select a Room Type"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -365,7 +423,11 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:gravity="center"
+<<<<<<< HEAD
             android:text="@string/book_viewing"
+=======
+            android:text="Book Viewing"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/accent_green"
@@ -379,7 +441,11 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:gravity="center"
+<<<<<<< HEAD
             android:text="@string/select_a_room"
+=======
+            android:text="Select a room"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/surface_white"

@@ -4,13 +4,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+<<<<<<< HEAD
 import android.view.View
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
+=======
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 import com.mansuetdev.bensuetstay.databinding.ActivityListingDetailBinding
 import com.mansuetdev.bensuetstay.databinding.ItemAmenityBinding
 import com.mansuetdev.bensuetstay.databinding.ItemRoomTypeBinding
 
+<<<<<<< HEAD
 /** Public listing page. Guests can look; booking and applying require a student login. */
 class ListingDetailActivity : BaseActivity() {
 
@@ -21,6 +28,12 @@ class ListingDetailActivity : BaseActivity() {
     private lateinit var binding: ActivityListingDetailBinding
     private var listing: AdminListing? = null
     private var selectedRoomIndex = -1
+=======
+class ListingDetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityListingDetailBinding
+    private var selectedRoomIndex: Int = -1
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     private val amenityIcons = mapOf(
         "WiFi" to R.drawable.ic_wifi,
@@ -29,6 +42,7 @@ class ListingDetailActivity : BaseActivity() {
         "Water incl." to R.drawable.ic_water_drop
     )
 
+<<<<<<< HEAD
     // Re-bind when the listing changes (e.g. a space is taken) while this page is open
     private val listingListener: () -> Unit = {
         listing?.let { current -> ListingRepository.findById(current.id)?.let { bind(it) } }
@@ -139,10 +153,50 @@ class ListingDetailActivity : BaseActivity() {
                 listing?.assignedLandlordId == null -> toast(getString(R.string.no_landlord_is_assigned_to_this))
                 phone.isNullOrBlank() -> toast(getString(R.string.the_landlord_s_number_isn_t))
                 !dial(phone) -> toast(getString(R.string.no_phone_app_found_on_this))
+=======
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityListingDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val accommodationId = intent.getStringExtra("ACCOMMODATION_ID")
+        // Accommodations are stored with IDs like "1_NSFAS" or "1_SELF_OR_BURSARY" due to the homepage split.
+        // We strip the suffix to find the correct AdminListing object from the repository.
+        val listingId = accommodationId?.substringBeforeLast("_") ?: ""
+        val listing = ListingRepository.findById(listingId)
+        
+        if (listing == null) {
+            finish()
+            return
+        }
+
+        binding.btnBack.setOnClickListener { finish() }
+
+        setupCarousel(listing.photoUris)
+        bindDetails(listing)
+        buildAmenities(listing.amenities)
+        buildRoomTypes(listing.rooms)
+
+        binding.btnCall.setOnClickListener {
+            val landlordId = listing.assignedLandlordId
+            if (landlordId != null) {
+                val landlord = LandlordRepository.findById(landlordId)
+                if (landlord != null && landlord.phone.isNotBlank()) {
+                    val dialIntent = Intent(Intent.ACTION_DIAL).apply {
+                        data = Uri.parse("tel:${landlord.phone}")
+                    }
+                    startActivity(dialIntent)
+                } else {
+                    Toast.makeText(this, "Landlord contact number not available", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "No landlord assigned to this listing", Toast.LENGTH_SHORT).show()
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             }
         }
 
         binding.btnBookViewing.setOnClickListener {
+<<<<<<< HEAD
             val current = listing ?: return@setOnClickListener
             if (!requireStudentLogin()) return@setOnClickListener
             startActivity(
@@ -183,10 +237,53 @@ class ListingDetailActivity : BaseActivity() {
                 startActivity(geo)
             } else if (!openUrl("https://www.google.com/maps/search/?api=1&query=" + Uri.encode(location))) {
                 toast(getString(R.string.no_maps_or_browser_app_found))
+=======
+            val student = StudentRepository.loggedInStudent
+            if (student == null) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                return@setOnClickListener
+            }
+            val intent = Intent(this, BookViewingActivity::class.java)
+            intent.putExtra("LISTING_ID", listing.id)
+            startActivity(intent)
+        }
+
+        binding.btnSelectRoom.setOnClickListener {
+            val student = StudentRepository.loggedInStudent
+            if (student == null) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                return@setOnClickListener
+            }
+
+            if (selectedRoomIndex == -1) return@setOnClickListener
+
+            val room = listing.rooms[selectedRoomIndex]
+            val intent = if (room.fundingType == FundingType.NSFAS) {
+                Intent(this, ConfirmNsfasActivity::class.java)
+            } else {
+                Intent(this, SelfFundedRegistrationActivity::class.java)
+            }
+            intent.putExtra("LISTING_ID", listing.id)
+            intent.putExtra("ROOM_INDEX", selectedRoomIndex)
+            startActivity(intent)
+        }
+
+        binding.ivStaticMap.setOnClickListener {
+            val mapIntentUri = android.net.Uri.parse("geo:0,0?q=" + android.net.Uri.encode(listing.location))
+            val mapIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, mapIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            if (mapIntent.resolveActivity(packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                val webIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, 
+                    android.net.Uri.parse("https://www.google.com/maps/search/?api=1&query=" + android.net.Uri.encode(listing.location)))
+                startActivity(webIntent)
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             }
         }
     }
 
+<<<<<<< HEAD
     private fun requireStudentLogin(): Boolean {
         if (Session.role == Role.STUDENT) return true
         toast(getString(R.string.log_in_as_a_student_to_2))
@@ -217,10 +314,63 @@ class ListingDetailActivity : BaseActivity() {
                 }
             }
         })
+=======
+    private fun setupCarousel(photoUris: List<String>) {
+        binding.viewPagerImages.adapter = CarouselAdapter(photoUris)
+
+        binding.dotsContainer.removeAllViews()
+        val dots = mutableListOf<android.view.View>()
+        val imageCount = photoUris.size.coerceAtLeast(1)
+        repeat(imageCount) { index ->
+            val dot = android.view.View(this)
+            val size = (8 * resources.displayMetrics.density).toInt()
+            val params = android.widget.LinearLayout.LayoutParams(size, size)
+            params.marginStart = (4 * resources.displayMetrics.density).toInt()
+            params.marginEnd = (4 * resources.displayMetrics.density).toInt()
+            dot.layoutParams = params
+            dot.setBackgroundResource(
+                if (index == 0) R.drawable.bg_dot_active else R.drawable.bg_dot_inactive
+            )
+            binding.dotsContainer.addView(dot)
+            dots.add(dot)
+        }
+
+        binding.viewPagerImages.registerOnPageChangeCallback(
+            object : androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    dots.forEachIndexed { index, dot ->
+                        dot.setBackgroundResource(
+                            if (index == position) R.drawable.bg_dot_active
+                            else R.drawable.bg_dot_inactive
+                        )
+                    }
+                }
+            }
+        )
+    }
+
+    private fun bindDetails(listing: AdminListing) {
+        binding.tvCampusAccepted.text = "ACCEPTS: ${listing.campusesServed.uppercase()}"
+        binding.tvName.text = listing.name
+        binding.tvLocation.text = listing.location
+        binding.tvPhone.text = "Contact Landlord: ${listing.assignedLandlordName ?: "N/A"}"
+        binding.tvSpacesOpen.text = "${listing.rooms.sumOf { it.spacesAvailable }} spaces open"
+        binding.tvDescription.text = listing.description
+        
+        binding.tvTransport.text = if (listing.hasTransport) "Transport Included" else "No Transport"
+        binding.ivTransportIcon.alpha = if (listing.hasTransport) 1.0f else 0.5f
+
+        binding.tvFurnished.text = if (listing.isFurnished) "Fully Furnished" else "Unfurnished"
+        binding.ivFurnishedIcon.alpha = if (listing.isFurnished) 1.0f else 0.5f
+
+        binding.tvElectricity.text = if (listing.isPrepaidElectricity) "Prepaid Electricity" else "Postpaid/Incl. Electricity"
+        binding.ivElectricityIcon.alpha = if (listing.isPrepaidElectricity) 1.0f else 0.5f
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 
     private fun buildAmenities(amenities: List<String>) {
         binding.amenitiesContainer.removeAllViews()
+<<<<<<< HEAD
         val density = resources.displayMetrics.density
         amenities.forEach { amenity ->
             val item = ItemAmenityBinding.inflate(LayoutInflater.from(this), binding.amenitiesContainer, false)
@@ -230,12 +380,29 @@ class ListingDetailActivity : BaseActivity() {
                 marginEnd = (6 * density).toInt()
             }
             binding.amenitiesContainer.addView(item.root)
+=======
+        amenities.forEach { amenity ->
+            val itemBinding = ItemAmenityBinding.inflate(
+                LayoutInflater.from(this), binding.amenitiesContainer, false
+            )
+            itemBinding.tvAmenityLabel.text = amenity
+            itemBinding.ivAmenityIcon.setImageResource(
+                amenityIcons[amenity] ?: R.drawable.ic_place
+            )
+            val params = android.widget.LinearLayout.LayoutParams(
+                0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f
+            )
+            params.marginEnd = (6 * resources.displayMetrics.density).toInt()
+            itemBinding.root.layoutParams = params
+            binding.amenitiesContainer.addView(itemBinding.root)
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         }
     }
 
     private fun buildRoomTypes(rooms: List<RoomConfig>) {
         binding.roomTypeContainer.removeAllViews()
         rooms.forEachIndexed { index, room ->
+<<<<<<< HEAD
             val item = ItemRoomTypeBinding.inflate(LayoutInflater.from(this), binding.roomTypeContainer, false)
             item.tvRoomName.text = Labels.roomType(this, room.roomType)
             Images.load(item.ivRoomPhoto, room.imageUrl, R.drawable.bg_image_placeholder)
@@ -265,5 +432,38 @@ class ListingDetailActivity : BaseActivity() {
         binding.btnSelectRoom.setBackgroundResource(
             if (enabled) R.drawable.bg_button_primary else R.drawable.bg_button_disabled
         )
+=======
+            val itemBinding = ItemRoomTypeBinding.inflate(
+                LayoutInflater.from(this), binding.roomTypeContainer, false
+            )
+            itemBinding.tvRoomName.text = room.roomType
+            if (room.imageUrl != null) {
+                try {
+                    itemBinding.ivRoomPhoto.setImageURI(android.net.Uri.parse(room.imageUrl))
+                } catch (e: Exception) {
+                    itemBinding.ivRoomPhoto.setImageResource(R.drawable.bg_image_placeholder)
+                }
+            } else {
+                itemBinding.ivRoomPhoto.setImageResource(R.drawable.bg_image_placeholder)
+            }
+            val isNsfas = room.fundingType == FundingType.NSFAS
+            itemBinding.tvRoomFunding.text = if (isNsfas) "NSFAS Funded" else "Self Funded"
+            itemBinding.tvRoomAllowance.text = if (isNsfas) "Allowance Covered" else "Price: ${room.price}"
+            itemBinding.tvRoomSpaces.text = "${room.spacesAvailable} spaces available"
+            itemBinding.dotSpaces.background.setTint(if (room.spacesAvailable > 0) 0xFF2FA36B.toInt() else 0xFFEB5757.toInt())
+            itemBinding.radioRoom.isChecked = index == selectedRoomIndex
+
+            itemBinding.root.setOnClickListener {
+                selectedRoomIndex = index
+                buildRoomTypes(rooms)
+                val roomSelected = selectedRoomIndex >= 0
+                binding.btnSelectRoom.isEnabled = roomSelected
+                binding.btnSelectRoom.setBackgroundResource(
+                    if (roomSelected) R.drawable.bg_button_primary else R.drawable.bg_button_disabled
+                )
+            }
+            binding.roomTypeContainer.addView(itemBinding.root)
+        }
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 }

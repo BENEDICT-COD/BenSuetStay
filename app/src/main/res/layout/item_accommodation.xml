@@ -23,7 +23,11 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_image_placeholder"
                 android:scaleType="centerCrop"
+<<<<<<< HEAD
                 android:contentDescription="@string/accommodation_photo" />
+=======
+                android:contentDescription="Accommodation photo" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
             <TextView
                 android:id="@+id/tvBadge"
@@ -35,7 +39,11 @@
                 android:paddingEnd="10dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
+<<<<<<< HEAD
                 android:text="@string/nsfas_accepted"
+=======
+                android:text="NSFAS Accepted"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_blue"
@@ -83,7 +91,11 @@
                     android:layout_height="14dp"
                     android:src="@drawable/ic_place"
                     app:tint="@color/text_muted"
+<<<<<<< HEAD
                     android:contentDescription="@string/location" />
+=======
+                    android:contentDescription="Location" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                 <TextView
                     android:id="@+id/tvLocation"

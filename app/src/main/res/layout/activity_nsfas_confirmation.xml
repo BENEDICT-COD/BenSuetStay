@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,7 +16,11 @@
         android:layout_height="40dp"
         android:background="@drawable/bg_button_outlined"
         android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
         android:contentDescription="@string/back" />
+=======
+        android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/nsfas_confirmation"
+=======
+                android:text="NSFAS Confirmation"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -39,7 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+<<<<<<< HEAD
                 tools:text="Residence Name"
+=======
+                android:text="Residence Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textColor="@color/brand_blue" />
 
@@ -47,7 +62,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/student_details"
+=======
+                android:text="Student Details"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -58,8 +77,12 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input_field"
+<<<<<<< HEAD
                 android:hint="@string/sa_id_number_13_digits"
                 android:maxLength="13"
+=======
+                android:hint="ID Number"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="number" />
@@ -70,7 +93,11 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_input_field"
+<<<<<<< HEAD
                 android:hint="@string/student_number"
+=======
+                android:hint="Student Number"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="text" />
@@ -81,7 +108,11 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_input_field"
+<<<<<<< HEAD
                 android:hint="@string/campus_institution"
+=======
+                android:hint="Campus/Institution"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="text" />
@@ -90,7 +121,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/room_selection"
+=======
+                android:text="Room Selection"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -100,7 +135,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+<<<<<<< HEAD
                 tools:text="Room Type"
+=======
+                android:text="Room Type"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textColor="@color/text_primary" />
 
@@ -108,7 +147,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+<<<<<<< HEAD
                 android:text="@string/required_documents"
+=======
+                android:text="Required Documents"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -137,7 +180,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+<<<<<<< HEAD
                     android:text="@string/upload_nsfas_approval_status"
+=======
+                    android:text="Upload NSFAS Approval/Status"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColor="@color/brand_blue"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -151,7 +198,11 @@
         android:layout_height="56dp"
         android:background="@drawable/bg_button_primary"
         android:gravity="center"
+<<<<<<< HEAD
         android:text="@string/submit_confirmation"
+=======
+        android:text="Submit Confirmation"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:textColor="@color/surface_white"
         android:textSize="16sp"
         android:textStyle="bold" />

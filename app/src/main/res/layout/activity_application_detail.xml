@@ -21,13 +21,21 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
             android:contentDescription="@string/back" />
+=======
+            android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+<<<<<<< HEAD
             android:text="@string/application_details"
+=======
+            android:text="Application Details"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -123,7 +131,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+<<<<<<< HEAD
                     android:text="@string/uploaded_documents"
+=======
+                    android:text="Uploaded Documents"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -154,7 +166,11 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:gravity="center"
+<<<<<<< HEAD
             android:text="@string/reject"
+=======
+            android:text="Reject"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/accent_red"
@@ -168,7 +184,11 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:gravity="center"
+<<<<<<< HEAD
             android:text="@string/approve"
+=======
+            android:text="Approve"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/surface_white"

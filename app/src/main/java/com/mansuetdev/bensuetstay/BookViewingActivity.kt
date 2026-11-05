@@ -3,6 +3,7 @@ package com.mansuetdev.bensuetstay
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+<<<<<<< HEAD
 import com.mansuetdev.bensuetstay.databinding.ActivityBookViewingBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -70,10 +71,33 @@ class BookViewingActivity : BaseActivity() {
         if (!SyncManager.isOnline(this)) {
             SyncManager.queueBooking(this, booking)
             toast(getString(R.string.saved_offline_booking), long = true)
+=======
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.mansuetdev.bensuetstay.databinding.ActivityBookViewingBinding
+import java.text.SimpleDateFormat
+import java.util.*
+
+class BookViewingActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityBookViewingBinding
+    private val calendar = Calendar.getInstance()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityBookViewingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val listingId = intent.getStringExtra("LISTING_ID")
+        val listing = ListingRepository.findById(listingId ?: "")
+
+        if (listing == null) {
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             finish()
             return
         }
 
+<<<<<<< HEAD
         binding.btnConfirmBooking.isEnabled = false
         BookingRepository.create(booking)
             .addOnSuccessListener {
@@ -96,6 +120,45 @@ class BookViewingActivity : BaseActivity() {
 
     private fun showDatePicker() {
         val dialog = DatePickerDialog(
+=======
+        binding.tvAccommodationName.text = listing.name
+
+        binding.btnBack.setOnClickListener { finish() }
+
+        binding.etDateTime.setOnClickListener {
+            showDatePicker()
+        }
+
+        binding.btnConfirmBooking.setOnClickListener {
+            val dateTime = binding.etDateTime.text.toString()
+            if (dateTime.isBlank()) {
+                Toast.makeText(this, "Please select a date and time", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val student = StudentRepository.loggedInStudent
+            if (student == null) {
+                Toast.makeText(this, "Please login to book a viewing", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val booking = Booking(
+                id = UUID.randomUUID().toString(),
+                studentName = student.fullName,
+                accommodationName = listing.name,
+                requestedDateTime = dateTime,
+                status = BookingStatus.PENDING
+            )
+
+            BookingRepository.addBooking(booking)
+            Toast.makeText(this, "Viewing requested successfully!", Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+
+    private fun showDatePicker() {
+        DatePickerDialog(
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             this,
             { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR, year)
@@ -106,9 +169,13 @@ class BookViewingActivity : BaseActivity() {
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
+<<<<<<< HEAD
         )
         dialog.datePicker.minDate = System.currentTimeMillis() - 1000
         dialog.show()
+=======
+        ).show()
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 
     private fun showTimePicker() {
@@ -117,11 +184,16 @@ class BookViewingActivity : BaseActivity() {
             { _, hourOfDay, minute ->
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 calendar.set(Calendar.MINUTE, minute)
+<<<<<<< HEAD
                 calendar.set(Calendar.SECOND, 0)
                 dateChosen = true
                 val format = SimpleDateFormat("EEE, dd MMM yyyy \u00b7 HH:mm", Locale.getDefault())
                 binding.etDateTime.setText(format.format(calendar.time))
                 if (calendar.timeInMillis <= System.currentTimeMillis()) toast(getString(R.string.that_time_has_already_passed))
+=======
+                val format = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
+                binding.etDateTime.setText(format.format(calendar.time))
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),

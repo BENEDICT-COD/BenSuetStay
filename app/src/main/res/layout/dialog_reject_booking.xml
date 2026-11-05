@@ -8,7 +8,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="@string/reason_for_rejection"
+=======
+        android:text="Reason for Rejection"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:textSize="14sp" />
@@ -18,7 +22,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+<<<<<<< HEAD
         android:hint="@string/e_g_fully_booked_maintenance_etc"
+=======
+        android:hint="e.g. Fully booked, maintenance, etc."
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:inputType="textMultiLine"
         android:minLines="2"
         android:background="@drawable/bg_input_field"
@@ -29,7 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+<<<<<<< HEAD
         android:text="@string/suggest_an_alternative_time_optional"
+=======
+        android:text="Suggest an Alternative Time (Optional)"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:textSize="14sp" />
@@ -39,7 +51,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+<<<<<<< HEAD
         android:hint="@string/e_g_tomorrow_at_10_00"
+=======
+        android:hint="e.g. Tomorrow at 10:00 AM"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:inputType="text"
         android:background="@drawable/bg_input_field"
         android:padding="12dp"

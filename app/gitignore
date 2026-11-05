@@ -1,0 +1,45 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+.kotlin/
+
+# Android Studio / IntelliJ project files (kept minimal on purpose —
+# .idea holds mostly personal editor state, not app source)
+.idea/*
+!.idea/gradle.xml
+!.idea/misc.xml
+
+# Gradle
+app/build/
+build/
+gradle-app.setting
+
+# Build outputs — never commit compiled binaries, only source
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Log/temp files
+*.log
+*.hprof
+
+# Keystore files — never commit signing secrets if/when a release key is created
+*.jks
+*.keystore
+
+# Uncomment the line below to exclude Firebase config instead of committing it.
+# See README for why this project currently commits it (grading convenience).
+# google-services.json

@@ -64,7 +64,11 @@
             android:src="@drawable/ic_security"
             app:tint="@color/brand_blue"
             android:layout_marginEnd="8dp"
+<<<<<<< HEAD
             android:contentDescription="@string/reset_password" />
+=======
+            android:contentDescription="Reset password" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         <ImageButton
             android:id="@+id/btnDeleteLandlord"
@@ -73,6 +77,10 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_delete"
             app:tint="@color/accent_red"
+<<<<<<< HEAD
             android:contentDescription="@string/delete_landlord" />
+=======
+            android:contentDescription="Delete landlord" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     </LinearLayout>
 </androidx.cardview.widget.CardView>

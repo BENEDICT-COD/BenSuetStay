@@ -11,6 +11,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.View
+<<<<<<< HEAD
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.mansuetdev.bensuetstay.databinding.ActivityRegisterBinding
@@ -25,17 +26,34 @@ class RegisterActivity : BaseActivity() {
 
     private var completingGoogle = false
     private var completed = false
+=======
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.mansuetdev.bensuetstay.databinding.ActivityRegisterBinding
+
+class RegisterActivity : AppCompatActivity() {
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     private lateinit var binding: ActivityRegisterBinding
     private var isPasswordVisible = false
     private var isNsfasSelected = true
+<<<<<<< HEAD
     private val auth = FirebaseAuth.getInstance()
+=======
+
+    private val auth = FirebaseAuth.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+<<<<<<< HEAD
         binding.btnBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
         binding.ivTogglePassword.setOnClickListener { togglePasswordVisibility() }
         binding.btnNsfas.setOnClickListener { selectFundingType(nsfas = true) }
@@ -103,6 +121,26 @@ class RegisterActivity : BaseActivity() {
             }
     }
 
+=======
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        binding.ivTogglePassword.setOnClickListener {
+            togglePasswordVisibility()
+        }
+
+        binding.btnNsfas.setOnClickListener { selectFundingType(nsfas = true) }
+        binding.btnSelfFunded.setOnClickListener { selectFundingType(nsfas = false) }
+
+        setupLoginLink()
+
+        binding.btnCreateAccount.setOnClickListener {
+            attemptRegistration()
+        }
+    }
+
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     private fun attemptRegistration() {
         val fullNames = binding.etFullNames.text.toString().trim()
         val address = binding.etAddress.text.toString().trim()
@@ -110,6 +148,7 @@ class RegisterActivity : BaseActivity() {
         val email = binding.etEmailPhone.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
 
+<<<<<<< HEAD
         if (completingGoogle) {
             if (fullNames.isEmpty() || address.isEmpty() || institution.isEmpty()) {
                 toast(getString(R.string.please_fill_in_all_fields)); return
@@ -173,16 +212,76 @@ class RegisterActivity : BaseActivity() {
             completingGoogle -> getString(R.string.finish_sign_up)
             else -> getString(R.string.create_account)
         }
+=======
+        if (fullNames.isEmpty() || address.isEmpty() || institution.isEmpty() ||
+            email.isEmpty() || password.isEmpty()
+        ) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (password.length < 6) {
+            Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        binding.btnCreateAccount.isEnabled = false
+        binding.btnCreateAccount.text = "Creating account\u2026"
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnSuccessListener { result ->
+                val uid = result.user?.uid ?: return@addOnSuccessListener
+                val fundingLabel = if (isNsfasSelected) "NSFAS" else "SELF_FUNDED"
+
+                val profile = StudentProfile(
+                    uid = uid,
+                    fullNames = fullNames,
+                    address = address,
+                    institution = institution,
+                    email = email,
+                    fundingType = fundingLabel
+                )
+
+                firestore.collection("students").document(uid)
+                    .set(profile)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Account created! Please log in.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        resetCreateButton()
+                        Toast.makeText(this, "Saved login, but profile failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
+            }
+            .addOnFailureListener { e ->
+                resetCreateButton()
+                Toast.makeText(this, "Registration failed: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+    }
+
+    private fun resetCreateButton() {
+        binding.btnCreateAccount.isEnabled = true
+        binding.btnCreateAccount.text = "Create Account"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     }
 
     private fun togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible
         val cursorPosition = binding.etPassword.text?.length ?: 0
         if (isPasswordVisible) {
+<<<<<<< HEAD
             binding.etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             binding.ivTogglePassword.setImageResource(R.drawable.ic_visibility_off)
         } else {
             binding.etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+=======
+            binding.etPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            binding.ivTogglePassword.setImageResource(R.drawable.ic_visibility_off)
+        } else {
+            binding.etPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             binding.ivTogglePassword.setImageResource(R.drawable.ic_visibility)
         }
         binding.etPassword.setSelection(cursorPosition)
@@ -190,6 +289,7 @@ class RegisterActivity : BaseActivity() {
 
     private fun selectFundingType(nsfas: Boolean) {
         isNsfasSelected = nsfas
+<<<<<<< HEAD
         val active = if (nsfas) binding.btnNsfas else binding.btnSelfFunded
         val inactive = if (nsfas) binding.btnSelfFunded else binding.btnNsfas
         active.setBackgroundResource(if (nsfas) R.drawable.bg_toggle_left_active else R.drawable.bg_toggle_right_active)
@@ -203,17 +303,56 @@ class RegisterActivity : BaseActivity() {
         val fullText = prompt + " " + getString(R.string.log_in_link)
         val spannable = SpannableString(fullText)
         val startIndex = prompt.length + 1
+=======
+        if (nsfas) {
+            binding.btnNsfas.setBackgroundResource(R.drawable.bg_toggle_left_active)
+            binding.btnNsfas.setTextColor(ContextCompat.getColor(this, R.color.surface_white))
+            binding.btnSelfFunded.setBackgroundColor(
+                ContextCompat.getColor(this, android.R.color.transparent)
+            )
+            binding.btnSelfFunded.setTextColor(ContextCompat.getColor(this, R.color.text_muted))
+        } else {
+            binding.btnSelfFunded.setBackgroundResource(R.drawable.bg_toggle_right_active)
+            binding.btnSelfFunded.setTextColor(ContextCompat.getColor(this, R.color.surface_white))
+            binding.btnNsfas.setBackgroundColor(
+                ContextCompat.getColor(this, android.R.color.transparent)
+            )
+            binding.btnNsfas.setTextColor(ContextCompat.getColor(this, R.color.text_muted))
+        }
+    }
+
+    private fun setupLoginLink() {
+        val fullText = "Already have an account? Log in"
+        val spannable = SpannableString(fullText)
+        val startIndex = fullText.indexOf("Log in")
+
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         spannable.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(this, R.color.brand_blue)),
             startIndex, fullText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
+<<<<<<< HEAD
         spannable.setSpan(StyleSpan(Typeface.BOLD), startIndex, fullText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+=======
+        spannable.setSpan(
+            StyleSpan(Typeface.BOLD),
+            startIndex, fullText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         spannable.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
                 startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             }
         }, startIndex, fullText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+<<<<<<< HEAD
         binding.tvLoginLink.text = spannable
         binding.tvLoginLink.movementMethod = LinkMovementMethod.getInstance()
     }
 }
+=======
+
+        binding.tvLoginLink.text = spannable
+        binding.tvLoginLink.movementMethod = LinkMovementMethod.getInstance()
+    }
+}
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809

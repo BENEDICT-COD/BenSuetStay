@@ -17,7 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:text="@string/admin_control_center"
+=======
+            android:text="Admin Control Center"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -25,7 +29,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:text="@string/platform_overview_and_management"
+=======
+            android:text="Platform overview and management"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="13sp"
             android:textColor="@color/text_muted" />
     </LinearLayout>
@@ -101,7 +109,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="10dp"
+<<<<<<< HEAD
                 android:text="@string/quick_actions"
+=======
+                android:text="Quick Actions"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -123,7 +135,11 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_apartment"
                     app:tint="@color/brand_blue"
+<<<<<<< HEAD
                     android:contentDescription="@string/manage_listings" />
+=======
+                    android:contentDescription="Manage listings" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -135,7 +151,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text="@string/manage_listings_2"
+=======
+                        android:text="Manage Listings"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -143,7 +163,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text="@string/create_edit_or_remove_accommodation_listings"
+=======
+                        android:text="Create, view, or remove landlord accounts"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="12sp"
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
@@ -153,7 +177,11 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_forward"
                     app:tint="@color/text_muted"
+<<<<<<< HEAD
                     android:contentDescription="@string/open" />
+=======
+                    android:contentDescription="Open" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +200,11 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_group"
                     app:tint="@color/brand_blue"
+<<<<<<< HEAD
                     android:contentDescription="@string/manage_landlords" />
+=======
+                    android:contentDescription="Manage landlords" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -184,7 +216,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text="@string/manage_landlords_2"
+=======
+                        android:text="Manage Landlords"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -192,7 +228,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text="@string/create_landlord_accounts_send_password_resets"
+=======
+                        android:text="Approve new accounts, view all landlords"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                         android:textSize="12sp"
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
@@ -202,7 +242,11 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_forward"
                     app:tint="@color/text_muted"
+<<<<<<< HEAD
                     android:contentDescription="@string/open" />
+=======
+                    android:contentDescription="Open" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             </LinearLayout>
 
         </LinearLayout>

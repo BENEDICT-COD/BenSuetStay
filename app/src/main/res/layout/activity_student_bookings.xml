@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,6 +27,7 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
             android:contentDescription="@string/back" />
 
         <TextView
@@ -32,11 +36,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             tools:text="My Bookings"
+=======
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="My Bookings"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
     </LinearLayout>
 
+<<<<<<< HEAD
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -60,5 +74,14 @@
             android:textColor="@color/text_muted"
             android:textSize="14sp" />
     </FrameLayout>
+=======
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBookings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
 </LinearLayout>

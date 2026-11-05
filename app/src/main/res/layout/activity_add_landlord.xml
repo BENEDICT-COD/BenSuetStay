@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,13 +25,21 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
+<<<<<<< HEAD
             android:contentDescription="@string/back" />
+=======
+            android:contentDescription="Back" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+<<<<<<< HEAD
             android:text="@string/add_landlord"
+=======
+            android:text="Add Landlord"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -48,7 +59,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/full_name"
+=======
+                android:text="Full Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -61,7 +76,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/e_g_thandeka_mahlangu"
+=======
+                android:hint="e.g. Thandeka Mahlangu"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPersonName"
@@ -71,7 +90,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/email"
+=======
+                android:text="Email"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -84,7 +107,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/landlord_email_com"
+=======
+                android:hint="landlord@email.com"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textEmailAddress"
@@ -94,7 +121,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/phone_number"
+=======
+                android:text="Phone Number"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -107,7 +138,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/e_g_071_234_5678"
+=======
+                android:hint="e.g. 071 234 5678"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="phone"
@@ -117,7 +152,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/temporary_password"
+=======
+                android:text="Temporary Password"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -130,7 +169,11 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+<<<<<<< HEAD
                 android:hint="@string/set_an_initial_password"
+=======
+                android:hint="Set an initial password"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPassword"
@@ -141,7 +184,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
+<<<<<<< HEAD
                 tools:text="Create Landlord Account"
+=======
+                android:text="Create Landlord Account"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

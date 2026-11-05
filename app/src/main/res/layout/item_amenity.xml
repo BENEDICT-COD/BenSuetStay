@@ -13,7 +13,11 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         app:tint="@color/brand_blue"
+<<<<<<< HEAD
         android:contentDescription="@string/amenity_icon" />
+=======
+        android:contentDescription="Amenity icon" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     <TextView
         android:id="@+id/tvAmenityLabel"

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,7 +33,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+<<<<<<< HEAD
                 android:text="@string/settings"
+=======
+                android:text="Settings"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="@color/brand_blue"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -89,7 +96,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+<<<<<<< HEAD
                     tools:text="Landlord Name"
+=======
+                    android:text="Landlord Name"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColor="@color/brand_blue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -98,7 +109,11 @@
                     android:id="@+id/tvProfileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     tools:text="landlord@email.com"
+=======
+                    android:text="landlord@email.com"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                     android:textColor="@color/text_muted"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -108,7 +123,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/account"
+=======
+                android:text="Account"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="@color/text_muted"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -147,7 +166,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_weight="1"
+<<<<<<< HEAD
                             android:text="@string/personal_information"
+=======
+                            android:text="Personal Information"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textColor="@color/text_primary" />
 
                         <ImageView
@@ -184,7 +207,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_weight="1"
+<<<<<<< HEAD
                             android:text="@string/change_password"
+=======
+                            android:text="Change Password"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textColor="@color/text_primary" />
 
                         <ImageView
@@ -193,6 +220,7 @@
                             android:src="@drawable/ic_arrow_forward"
                             app:tint="@color/text_muted" />
                     </LinearLayout>
+<<<<<<< HEAD
 
                     <View
                         android:layout_width="match_parent"
@@ -246,6 +274,8 @@
                             android:src="@drawable/ic_arrow_forward"
                             app:tint="@color/text_muted" />
                     </LinearLayout>
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -254,7 +284,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
+<<<<<<< HEAD
                 android:text="@string/support"
+=======
+                android:text="Support"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="@color/text_muted"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -293,7 +327,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_weight="1"
+<<<<<<< HEAD
                             android:text="@string/help_center"
+=======
+                            android:text="Help Center"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                             android:textColor="@color/text_primary" />
 
                         <ImageView
@@ -305,6 +343,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+<<<<<<< HEAD
             <!-- Notifications, security, offline, help and privacy sections (built in code) -->
             <LinearLayout
                 android:id="@+id/settingsSections"
@@ -312,13 +351,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
+=======
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
             <Button
                 android:id="@+id/btnLogout"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="32dp"
+<<<<<<< HEAD
                 android:text="@string/log_out"
+=======
+                android:text="Log Out"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="#EB5757"
                 android:textStyle="bold"
                 app:rippleColor="#20EB5757" />
@@ -329,7 +374,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="24dp"
+<<<<<<< HEAD
                 android:text="@string/version_1_0_0"
+=======
+                android:text="Version 1.0.0"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
                 android:textColor="@color/text_muted"
                 android:textSize="12sp" />
 

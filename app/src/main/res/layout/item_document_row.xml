@@ -16,7 +16,11 @@
         android:layout_height="20dp"
         android:src="@drawable/ic_description"
         app:tint="@color/brand_blue"
+<<<<<<< HEAD
         android:contentDescription="@string/document" />
+=======
+        android:contentDescription="Document" />
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
 
     <TextView
         android:id="@+id/tvDocumentName"
@@ -30,7 +34,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="@string/view"
+=======
+        android:text="View"
+>>>>>>> d231b4d53e6f750ae3c0daf4f61493ce26eaf809
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="@color/brand_blue" />
