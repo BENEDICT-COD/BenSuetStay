@@ -1,13 +1,3 @@
-<p align="center"><img src="docs/images/banner.png" alt="BenSuet Stay — safe, verified student accommodation near your campus" width="100%"></p>
-
-<p align="center">
-  <a href="https://github.com/BENEDICT-COD/BenSuetStay/actions/workflows/android-ci.yml"><img src="https://github.com/BENEDICT-COD/BenSuetStay/actions/workflows/android-ci.yml/badge.svg" alt="Android CI status"></a>
-  <img src="https://img.shields.io/badge/version-2.0.0-123DAD" alt="Version 2.0.0">
-  <img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white" alt="Android 8.0 and newer">
-  <img src="https://img.shields.io/badge/Kotlin-Firebase-FFCA28?logo=firebase&logoColor=black" alt="Kotlin and Firebase">
-  <img src="https://img.shields.io/badge/languages-11-2FA36B" alt="11 languages">
-</p>
-
 **BenSuet Stay** is an Android app that connects South African students with safe, verified accommodation near their campus. It matches each student to residences that accept their funding (NSFAS or self-funded/bursary), in any of the country's 11 written official languages. It also keeps working when data runs out.
 
 Built by **Mpilonhle Memela** ([Mansuet Dev](https://mansuetdev.tech)) as the Portfolio of Evidence for PROG6212 / APPR6312 at Rosebank College (The IIE).
