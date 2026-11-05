@@ -46,24 +46,7 @@ Built by **Mpilonhle Memela** ([Mansuet Dev](https://mansuetdev.tech)) as the Po
 
 ---
 
-## 2. Screenshots
 
-<table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/01-welcome.png" width="180" alt="Welcome screen"><br><sub>Welcome + language picker</sub></td>
-    <td align="center"><img src="docs/screenshots/02-home.png" width="180" alt="Home screen"><br><sub>Funding + campus filters</sub></td>
-    <td align="center"><img src="docs/screenshots/03-listing-detail.png" width="180" alt="Listing detail"><br><sub>Listing + distance to campus</sub></td>
-    <td align="center"><img src="docs/screenshots/04-my-applications.png" width="180" alt="My Applications"><br><sub>Application tracking</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/05-landlord-dashboard.png" width="180" alt="Landlord dashboard"><br><sub>Landlord dashboard</sub></td>
-    <td align="center"><img src="docs/screenshots/06-settings.png" width="180" alt="Settings"><br><sub>Settings</sub></td>
-    <td align="center"><img src="docs/screenshots/07-offline-sync.png" width="180" alt="Offline sync"><br><sub>Offline: waiting to sync</sub></td>
-    <td align="center"><img src="docs/screenshots/08-isizulu.png" width="180" alt="App in isiZulu"><br><sub>The app in isiZulu</sub></td>
-  </tr>
-</table>
-
----
 
 ## 3. Design considerations
 
@@ -312,4 +295,4 @@ The video shows, in order:
 
 ---
 
-<p align="center"><sub>© 2026 Mpilonhle Memela · Mansuet Dev · Built for the PROG6212/APPR6312 Portfolio of Evidence, Rosebank College (The IIE)</sub></p>
+<p align="center"><sub>© 2026 Mpilonhle Memela · Mansuet Dev · Built for the OPSC6312 Portfolio of Evidence, Rosebank College (The IIE)</sub></p>
