@@ -1,0 +1,111 @@
+rules_version = '2';
+
+// BenSuet Stay: Firestore security rules
+//
+// Roles (every user signs in with Firebase Authentication):
+//   admin    -> a document exists at admins/{uid}      (created by hand in the console)
+//   landlord -> a document exists at landlords/{uid}   (created by an admin in the app)
+//   student  -> a document exists at students/{uid}    (created on registration)
+//
+// Paste into Firebase console -> Firestore Database -> Rules -> Publish,
+// or deploy with: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+    // True when an update touches only the listed fields
+    function onlyChanges(fields) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
+    }
+    function listing(listingId) {
+      return get(/databases/$(database)/documents/accommodations/$(listingId)).data;
+    }
+
+    match /admins/{uid} {
+      allow read: if isSelf(uid);
+      allow update: if isSelf(uid) && onlyChanges(['profileImageUri']);
+      // No create/delete from the app: admins are managed in the Firebase console.
+    }
+
+    match /landlords/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin()
+        || (isSelf(uid) && onlyChanges(['profileImageUri', 'mustChangePassword']));
+    }
+
+    match /students/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow create: if isSelf(uid);
+      // Funding type and email can't be changed after registration
+      allow update: if isSelf(uid)
+        && onlyChanges(['fullNames', 'address', 'institution', 'profileImageUri']);
+      // Students can delete their own account (Settings → Privacy); admins can too
+      allow delete: if isSelf(uid) || isAdmin();
+    }
+
+    match /accommodations/{listingId} {
+      // Public so guests can browse
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      // The assigned landlord may only change room availability (approving an application)
+      allow update: if isAdmin()
+        || (signedIn()
+            && resource.data.assignedLandlordId == request.auth.uid
+            && onlyChanges(['rooms'])
+            && request.resource.data.rooms.size() == resource.data.rooms.size());
+    }
+
+    match /bookings/{bookingId} {
+      allow read: if signedIn()
+        && (resource.data.studentId == request.auth.uid
+            || resource.data.landlordId == request.auth.uid
+            || isAdmin());
+      // A student books for themselves, with the listing's real landlord
+      allow create: if signedIn()
+        && request.resource.data.studentId == request.auth.uid
+        && request.resource.data.status == 'PENDING'
+        && listing(request.resource.data.listingId).assignedLandlordId == request.resource.data.landlordId;
+      allow update: if isAdmin()
+        || (signedIn()
+            && resource.data.landlordId == request.auth.uid
+            && onlyChanges(['status', 'rejectionReason', 'suggestedTime']));
+      allow delete: if isAdmin();
+    }
+
+    // Real-time alerts (NotificationCenter). Written together with the action that caused them.
+    match /notifications/{alertId} {
+      allow create: if signedIn()
+        && request.resource.data.senderId == request.auth.uid
+        && request.resource.data.read == false
+        && request.resource.data.keys().hasOnly(['recipientId', 'senderId', 'type', 'args', 'read', 'createdAt']);
+      allow read, delete: if signedIn() && resource.data.recipientId == request.auth.uid;
+      allow update: if signedIn() && resource.data.recipientId == request.auth.uid && onlyChanges(['read']);
+    }
+
+    match /applications/{appId} {
+      allow read: if signedIn()
+        && (resource.data.studentId == request.auth.uid
+            || resource.data.landlordId == request.auth.uid
+            || isAdmin());
+      allow create: if signedIn()
+        && request.resource.data.studentId == request.auth.uid
+        && request.resource.data.status == 'SUBMITTED'
+        && listing(request.resource.data.listingId).assignedLandlordId == request.resource.data.landlordId;
+      // Only the landlord decides; the student can't edit after submitting
+      allow update: if isAdmin()
+        || (signedIn()
+            && resource.data.landlordId == request.auth.uid
+            && onlyChanges(['status', 'feedback']));
+      allow delete: if isAdmin();
+    }
+  }
+}

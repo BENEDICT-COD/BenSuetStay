@@ -1,0 +1,56 @@
+rules_version = '2';
+
+// BenSuet Stay: Cloud Storage security rules
+//
+// Paste into Firebase console -> Storage -> Rules -> Publish (accept the prompt to let
+// Storage read Firestore; the admin and landlord checks below need it),
+// or deploy with: firebase deploy --only storage
+//
+// If your Firestore database isn't named "(default)", replace (default) below.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return signedIn()
+        && firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+    function smallerThanMb(mb) {
+      return request.resource.size < mb * 1024 * 1024;
+    }
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    // Listing photos, room photos and the listing video: public to view, admin-only to change
+    match /listings/{listingId}/{folder}/{fileName} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && smallerThanMb(50)
+        && (isImage() || request.resource.contentType.matches('video/.*'));
+      allow delete: if isAdmin();
+    }
+
+    // Profile pictures for every role: profile_pictures/{uid}/avatar.jpg
+    match /profile_pictures/{uid}/{fileName} {
+      allow read: if true;
+      allow create, update: if signedIn() && request.auth.uid == uid && isImage() && smallerThanMb(5);
+      allow delete: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Application documents (ID copies, NSFAS letters): uploaded by the student; readable by
+    // that student, the listing's landlord and admins
+    match /applications/{studentId}/{appId}/{fileName} {
+      allow create: if signedIn()
+        && request.auth.uid == studentId
+        && smallerThanMb(10)
+        && (isImage() || request.resource.contentType == 'application/pdf');
+      allow read: if signedIn()
+        && (request.auth.uid == studentId
+            || isAdmin()
+            || firestore.get(/databases/(default)/documents/applications/$(appId)).data.landlordId == request.auth.uid);
+    }
+  }
+}
