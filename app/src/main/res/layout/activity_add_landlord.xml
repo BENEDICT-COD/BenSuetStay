@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -21,13 +22,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Add Landlord"
+            android:text="@string/add_landlord"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Full Name"
+                android:text="@string/full_name"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -60,7 +61,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="e.g. Thandeka Mahlangu"
+                android:hint="@string/e_g_thandeka_mahlangu"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPersonName"
@@ -70,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Email"
+                android:text="@string/email"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -83,7 +84,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="landlord@email.com"
+                android:hint="@string/landlord_email_com"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textEmailAddress"
@@ -93,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Phone Number"
+                android:text="@string/phone_number"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -106,7 +107,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="e.g. 071 234 5678"
+                android:hint="@string/e_g_071_234_5678"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="phone"
@@ -116,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Temporary Password"
+                android:text="@string/temporary_password"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -129,7 +130,7 @@
                 android:background="@drawable/bg_input_field"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:hint="Set an initial password"
+                android:hint="@string/set_an_initial_password"
                 android:textColorHint="@color/text_placeholder"
                 android:textColor="@color/text_primary"
                 android:inputType="textPassword"
@@ -140,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                android:text="Create Landlord Account"
+                tools:text="Create Landlord Account"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

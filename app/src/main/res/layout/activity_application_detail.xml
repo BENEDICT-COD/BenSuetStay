@@ -21,13 +21,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Application Details"
+            android:text="@string/application_details"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Uploaded Documents"
+                    android:text="@string/uploaded_documents"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -154,7 +154,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:gravity="center"
-            android:text="Reject"
+            android:text="@string/reject"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/accent_red"
@@ -168,7 +168,7 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Approve"
+            android:text="@string/approve"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/surface_white"

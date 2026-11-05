@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here's what's happening with your listings"
+            android:text="@string/here_s_what_s_happening_with"
             android:textSize="13sp"
             android:textColor="@color/text_muted" />
     </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="10dp"
-                android:text="Your Accommodations"
+                android:text="@string/your_accommodations"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
-                android:text="These listings were set up by the BenSuet Stay admin team. Contact support if any details need updating."
+                android:text="@string/these_listings_were_set_up_by"
                 android:textSize="12sp"
                 android:textColor="@color/text_muted" />
 

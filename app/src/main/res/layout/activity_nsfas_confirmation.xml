@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +13,7 @@
         android:layout_height="40dp"
         android:background="@drawable/bg_button_outlined"
         android:src="@drawable/ic_arrow_back"
-        android:contentDescription="Back" />
+        android:contentDescription="@string/back" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="NSFAS Confirmation"
+                android:text="@string/nsfas_confirmation"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Residence Name"
+                tools:text="Residence Name"
                 android:textSize="16sp"
                 android:textColor="@color/brand_blue" />
 
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Student Details"
+                android:text="@string/student_details"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -57,7 +58,8 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input_field"
-                android:hint="ID Number"
+                android:hint="@string/sa_id_number_13_digits"
+                android:maxLength="13"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="number" />
@@ -68,7 +70,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_input_field"
-                android:hint="Student Number"
+                android:hint="@string/student_number"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="text" />
@@ -79,7 +81,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_input_field"
-                android:hint="Campus/Institution"
+                android:hint="@string/campus_institution"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:inputType="text" />
@@ -88,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Room Selection"
+                android:text="@string/room_selection"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -98,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Room Type"
+                tools:text="Room Type"
                 android:textSize="16sp"
                 android:textColor="@color/text_primary" />
 
@@ -106,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Required Documents"
+                android:text="@string/required_documents"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_muted" />
@@ -135,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:text="Upload NSFAS Approval/Status"
+                    android:text="@string/upload_nsfas_approval_status"
                     android:textColor="@color/brand_blue"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -149,7 +151,7 @@
         android:layout_height="56dp"
         android:background="@drawable/bg_button_primary"
         android:gravity="center"
-        android:text="Submit Confirmation"
+        android:text="@string/submit_confirmation"
         android:textColor="@color/surface_white"
         android:textSize="16sp"
         android:textStyle="bold" />

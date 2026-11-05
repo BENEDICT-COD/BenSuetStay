@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,7 +35,7 @@
                     android:layout_margin="16dp"
                     android:background="@drawable/bg_button_outlined"
                     android:src="@drawable/ic_arrow_back"
-                    android:contentDescription="Back" />
+                    android:contentDescription="@string/back" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
                     android:paddingEnd="10dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="Building / Common areas"
+                    android:text="@string/building_common_areas"
                     android:textSize="11sp"
                     android:textColor="@color/surface_white"
                     android:background="#99000000" />
@@ -94,7 +95,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_place"
                         app:tint="@color/text_muted"
-                        android:contentDescription="Location" />
+                        android:contentDescription="@string/location" />
 
                     <TextView
                         android:id="@+id/tvLocation"
@@ -104,6 +105,17 @@
                         android:textSize="13sp"
                         android:textColor="@color/text_muted" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/brand_blue"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:text="≈ 2.4 km from Wits University" />
 
                 <!-- Amenities -->
                 <LinearLayout
@@ -140,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Transport Included"
+                            tools:text="Transport Included"
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -162,7 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Fully Furnished"
+                            tools:text="Fully Furnished"
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -183,7 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Prepaid Electricity"
+                            tools:text="Prepaid Electricity"
                             android:textSize="13sp"
                             android:textColor="@color/text_primary" />
                     </LinearLayout>
@@ -194,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -213,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Location Map"
+                    android:text="@string/location_map"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
@@ -230,7 +242,7 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_map_placeholder"
-                        android:contentDescription="Map Location" />
+                        android:contentDescription="@string/map_location" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -258,7 +270,7 @@
                         android:layout_height="20dp"
                         android:src="@drawable/ic_call"
                         app:tint="@color/brand_blue"
-                        android:contentDescription="Phone" />
+                        android:contentDescription="@string/phone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -270,7 +282,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Contact landlord"
+                            android:text="@string/contact_landlord"
                             android:textSize="11sp"
                             android:textColor="@color/text_muted" />
 
@@ -291,7 +303,7 @@
                         android:paddingEnd="20dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp"
-                        android:text="Call"
+                        android:text="@string/call"
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/surface_white"
@@ -313,7 +325,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Select a Room Type"
+                        android:text="@string/select_a_room_type"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
@@ -353,7 +365,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:gravity="center"
-            android:text="Book Viewing"
+            android:text="@string/book_viewing"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/accent_green"
@@ -367,7 +379,7 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Select a room"
+            android:text="@string/select_a_room"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/surface_white"

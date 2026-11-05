@@ -3,26 +3,55 @@ package com.mansuetdev.bensuetstay
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.firebase.auth.FirebaseAuth
 import com.mansuetdev.bensuetstay.databinding.ActivityWelcomeBinding
 
-class WelcomeActivity : AppCompatActivity() {
+/**
+ * Entry point. If Firebase still has a signed-in user (app reopened, or Android killed the
+ * process), the splash stays up while their role is loaded and they go straight to their
+ * home screen. Otherwise the intro animation and buttons are shown.
+ */
+class WelcomeActivity : BaseActivity() {
 
     private lateinit var binding: ActivityWelcomeBinding
+    private var restoringSession = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
+        splash.setKeepOnScreenCondition { restoringSession }
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        runIntroSequence()
         setupClickListeners()
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            runIntroSequence()
+            return
+        }
+
+        restoringSession = true
+        Session.load(
+            user.uid,
+            onLoaded = { role ->
+                restoringSession = false
+                if (role != null) {
+                    Navigator.openHome(this, role)
+                } else {
+                    Session.signOut()
+                    runIntroSequence()
+                }
+            },
+            onFailed = { e ->
+                restoringSession = false
+                runIntroSequence()
+                toast(getString(R.string.couldn_t_restore_your_session, AuthErrors.message(this, e)), long = true)
+            }
+        )
     }
 
     private fun runIntroSequence() {
-        // Frame 1 -> 2: logo group fades in
         binding.logoGroup.animate()
             .alpha(1f)
             .setStartDelay(400)
@@ -30,7 +59,6 @@ class WelcomeActivity : AppCompatActivity() {
             .setInterpolator(DecelerateInterpolator())
             .start()
 
-        // Frame 2 -> 3: button group rises and fades in
         binding.buttonGroup.animate()
             .alpha(1f)
             .translationY(0f)
@@ -41,14 +69,14 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
+        binding.tvLanguage.text = LanguagePicker.currentName()
+        binding.tvLanguage.setOnClickListener { LanguagePicker.show(this) }
         binding.btnGetStarted.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-
         binding.tvBrowse.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }

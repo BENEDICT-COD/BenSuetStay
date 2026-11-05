@@ -22,14 +22,14 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:text="Manage Landlords"
+            android:text="@string/manage_landlords_2"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary" />
@@ -41,7 +41,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_add"
             app:tint="@color/brand_blue"
-            android:contentDescription="Add landlord" />
+            android:contentDescription="@string/add_landlord_2" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
