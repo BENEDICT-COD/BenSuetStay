@@ -158,6 +158,7 @@
     <string name="home">Ikhaya</string>
     <string name="search">Sesha</string>
     <string name="bookings">Ukubhuka</string>
+    <string name="viewing_bookings">Ukubhuka kokubuka</string>
     <string name="applications">Izicelo</string>
     <string name="self_bursary_funded_2">Ukuzixhasa / Umfundaze</string>
     <string name="room_photo_selected">Isithombe sekamelo sikhethiwe: %1$s</string>

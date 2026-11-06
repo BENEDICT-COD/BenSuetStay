@@ -141,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                tools:text="Create Landlord Account"
+                android:text="@string/create_landlord_account"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

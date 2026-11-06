@@ -85,7 +85,7 @@
                 android:id="@+id/btnSaveChanges"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                tools:text="Save Changes"
+                android:text="@string/save_changes"
                 android:textStyle="bold"
                 android:backgroundTint="@color/brand_blue"
                 android:textColor="@color/surface_white" />

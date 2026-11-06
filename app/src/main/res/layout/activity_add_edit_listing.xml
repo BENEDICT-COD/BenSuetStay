@@ -384,7 +384,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:gravity="center"
-                tools:text="Save Listing"
+                android:text="@string/save_listing"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/surface_white"

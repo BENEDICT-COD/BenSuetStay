@@ -163,6 +163,7 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="bookings">Bookings</string>
+    <string name="viewing_bookings">Viewing Bookings</string>
     <string name="applications">Applications</string>
     <string name="self_bursary_funded_2">Self / Bursary Funded</string>
     <string name="room_photo_selected">Room photo selected: %1$s</string>
