@@ -1,98 +1,46 @@
 # BenSuet Stay
 
-**BenSuet Stay** is an Android app that helps South African students find safe, verified accommodation near their institutions, with funding-aware filtering. NSFAS-funded students see NSFAS-accredited rooms near their campus, and self-funded or bursary students see self-funded options near theirs.
+**BenSuet Stay** is an Android app that connects South African students with safe, verified accommodation near their campus. It matches each student to residences that accept their funding (NSFAS or self-funded/bursary), in any of the country's 11 written official languages. It also keeps working when data runs out.
 
-Built as the Portfolio of Evidence (PoE) project for **OPSC6312** at Rosebank College (The IIE).
+Built by **Mpilonhle Memela** ([Mansuet Dev](https://mansuetdev.tech)) as the Portfolio of Evidence for **OPSC6312** at Rosebank College (The IIE).
 
 ---
 
-## About the App
+## Contents
 
-There are three roles. All of them sign in with Firebase Authentication.
+1. [Purpose of the app](#1-purpose-of-the-app)
+2. [Project Structure](#2-project-structure)
+3. [Design considerations](#3-design-considerations)
+4. [GitHub and GitHub Actions](#4-github-and-github-actions)
+5. [Release notes](#5-release-notes)
+6. [Getting started](#6-getting-started)
+7. [PoE requirements map](#7-poe-requirements-map)
+8. [Demo video](#8-demo-video)
+9. [Use of AI tools](#9-use-of-ai-tools)
 
-- **Students** register with their institution and funding type. They browse listings filtered to them, book viewings, and apply for rooms with their documents. They can then track each application's outcome and the landlord's feedback.
-- **Landlords** are created by an admin. They see only the listings assigned to them, and only the bookings and applications for those listings. They confirm or decline viewings and approve or reject applications. Approving takes one space off the room automatically.
-- **Admins** create, edit and delete listings, including photos and a video. They also create and remove landlord accounts and send landlords password-reset emails.
+---
 
-## Features
+## 1. Purpose of the app
 
-### Student
-- Registration with name, address, institution, email, password and funding type (NSFAS or Self-Funded/Bursary).
-- Stays signed in across app restarts.
-- Homepage defaults to the student's funding type and their campus. The two filters work independently, and search applies on top of both.
-- Guests can browse every listing without an account.
-- Listing detail page with a photo carousel, amenities, landlord contact, live room availability and map link.
-- Viewing bookings, which can't be made in the past.
-- Room applications, where the student picks their documents (PDF or image) and the file names are recorded:
-  - **NSFAS:** SA ID number, checked for a valid date of birth and Luhn check digit, plus student number, campus and NSFAS status letter.
-  - **Self-funded:** next of kin, ID copy and proof of registration.
-  - Duplicate applications to the same residence are blocked.
-- **My Bookings** and **My Applications** screens show status and feedback live.
+**The problem.** Every year thousands of students look for a place to stay near campus, usually through social media posts and word of mouth. Their needs differ:
+- **NSFAS students** can only use NSFAS-accredited residences.
+- **Self-funded and bursary students** compare prices and distance.
+- **Everyone** is exposed to fake listings, unsafe buildings and landlords who never reply.
 
-### Landlord
-- Dashboard with live counts of active listings, pending applications and upcoming viewings.
-- Must change the temporary password on first login.
-- Confirm or decline viewing requests, with a reason and a suggested alternative time.
-- Review applications and see which documents the student provided. Approving or declining includes a note for the student. Approval decrements room availability inside a Firestore transaction.
+**The solution.** BenSuet Stay puts verified listings in one place:
+- Listings are created by an administrator and assigned to vetted landlords.
+- Each student sees what fits their funding type and campus.
+- Students can book a viewing, apply for a room and follow every step until a decision.
 
-### Admin
-- Platform stats using Firestore `count()` queries, so no documents are downloaded.
-- Full listing management:
-  - Fields: name, location, campuses served, amenities, transport, furnishing and electricity.
-  - Rooms: per-room-type funding, rent and spaces.
-  - Media: listing photos, room photos and a video, linked from the admin's phone.
-- Landlord management: create accounts, send reset emails, delete accounts (their listings are unassigned).
+| Role | What they do in the app |
+| --- | --- |
+| **Student** | Registers (email or Google). Browses residences filtered by funding and campus, with distance to campus. Books viewings and applies for rooms (NSFAS confirmation or self-funded registration). Tracks applications and landlord feedback, and gets notified of every decision. |
+| **Landlord** | Account created by an admin. Sees only their own listings, and confirms or declines viewing requests with a reason. Reviews applications and approves or declines them; room availability updates automatically. |
+| **Admin** | Creates and edits listings (rooms, prices, amenities, photos). Creates landlord accounts, sends password resets and removes accounts. Sees platform totals. |
 
-## PoE Requirements: where to find each one
+---
 
-| Requirement | How it's done | Code |
-|---|---|---|
-| Register & log in, password encrypted | Firebase Authentication stores passwords as salted **scrypt hashes**. The app and Firestore never see or store them. | `LoginActivity`, `RegisterActivity` |
-| Single sign-on (SSO) | **Continue with Google** via Android Credential Manager → Firebase Auth. New Google users finish a short campus/funding step with no password. | `GoogleSignIn.kt` |
-| Settings | Profile, photo, password, language, notification switches, home-screen defaults, offline sync status, FAQ, contact support, privacy policy, delete account | `StudentProfileActivity`, `LandlordProfileActivity` |
-| REST API | **OpenStreetMap Nominatim** geocoding (`GET /search`). Listing coordinates are stored when the admin saves, and students see **"≈ 2.4 km from your campus"**. Responses are cached and rate-limited to 1 request per second, per the API's policy. | `GeocodingApi.kt` |
-| Offline mode with sync | **SQLite outbox.** Viewing bookings and applications made offline are stored locally and sent automatically when the connection returns (Android network callback). Listings still browse offline from Firestore's on-device cache. | `OfflineStore.kt`, `SyncManager.kt` |
-| Real-time notifications | **FCM push** to topics (`all`, `students`, `landlords`, `admins`), plus **real-time event alerts** via a `notifications` collection: booking requested/confirmed/declined, application submitted/approved/declined | `NotificationCenter.kt`, `BenSuetMessagingService.kt`, `Notifier.kt` |
-| Multi-language | All 11 written SA languages | `res/values-*`, `LanguagePicker.kt` |
-| NoSQL store/read | Cloud Firestore | `*Repository.kt` |
-
-## Demo-video checklist
-
-1. **Register and log in.** Then open Firebase → Authentication and point out that passwords aren't visible anywhere.
-2. **Continue with Google** on the login screen.
-3. **Settings:** edit your profile, change your password, and switch the language (for example, to isiZulu). Every screen changes language.
-4. **REST API:**
-   1. As admin, save a listing. The button shows "Finding location…".
-   2. As a student, open that listing to see "≈ X km from <campus>".
-5. **Offline sync:**
-   1. Turn on airplane mode, then book a viewing. You'll see the "saved offline" message, and My Bookings shows **Waiting to sync**.
-   2. Turn airplane mode off. A "Back online" notification appears and the booking syncs.
-6. **Real-time notifications.** Use two emulators/phones (student and landlord). The landlord confirms the viewing and the student's phone shows a notification immediately.
-7. **Push notifications.** Send one from the Firebase console to the `students` topic with the app closed (setup step 7 below).
-
-## Languages
-
-The whole app is available in all 11 written official languages of South Africa: English, Afrikaans, isiZulu, isiXhosa, Sepedi, Setswana, Sesotho, Xitsonga, siSwati, Tshivenḓa and isiNdebele.
-
-- **Where to switch:** the globe button on the Welcome screen, or **Settings → App Language** (every role). On Android 13+ it also appears under the phone's *Settings → Apps → BenSuet Stay → Language*.
-- **How it works:** AppCompat's per-app language API. The choice is remembered and the screen redraws in the new language.
-- **Where the text lives:** `res/values-<code>/strings.xml`, with Sepedi in `values-b+nso`.
-- **What stays the same:** values stored in Firestore (room types, amenities, funding) stay in English, so filtering and approvals work the same in every language. Only what's displayed is translated.
-- **Native review recommended:** translations were machine-assisted and checked for completeness and formatting. Before release, have a native speaker review them, especially Tshivenḓa, isiNdebele, siSwati and Xitsonga.
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Language | Kotlin |
-| UI | XML layouts, ViewBinding, Material Components, edge-to-edge (Android 15+ ready) |
-| Auth | Firebase Authentication (email/password) for all roles |
-| Data | Cloud Firestore with scoped real-time listeners and security rules |
-| Files | Listing media linked from the admin's device; Cloud Storage for profile pictures only (optional, needs Blaze) |
-| Images | Coil |
-| Min / target SDK | 26 (Android 8.0) / 37 |
-
-## Project Structure
+## 2. Project Structure
 
 ```
 app/src/main/java/com/mansuetdev/bensuetstay/
@@ -109,81 +57,155 @@ app/src/main/java/com/mansuetdev/bensuetstay/
 firestore.rules, storage.rules, firebase.json   # Security rules (repo root)
 ```
 
-### Firestore collections
+---
 
-| Collection | Doc id | Written by | Read by |
-|---|---|---|---|
+## 3. Design considerations
+
+### 3.1 Architecture
+
+The app is written in Kotlin. Firebase is the backend, so there is no custom server to host or pay for.
+
+```mermaid
+flowchart LR
+  subgraph App["Android app (Kotlin)"]
+    UI["Activities + ViewBinding<br/>Material 3 UI"]
+    Logic["ListingLogic + Validators<br/>pure Kotlin, unit-tested"]
+    Repos["Repositories<br/>Listing, Booking, Application,<br/>Student, Landlord, Admin"]
+    Session["Session + Navigator<br/>who is signed in, which role"]
+    Offline["SyncManager<br/>SQLite outbox"]
+    Notif["NotificationCenter<br/>+ FCM service"]
+  end
+  UI --> Logic
+  UI --> Repos
+  UI --> Session
+  UI --> Offline
+  Offline --> Repos
+  Repos --> FS[("Cloud Firestore<br/>Johannesburg region")]
+  Session --> Auth["Firebase Authentication<br/>email + Google"]
+  Notif --> FS
+  FCM["Firebase Cloud Messaging"] --> Notif
+  UI --> Geo["OpenStreetMap Nominatim<br/>REST API"]
+```
+
+- **Screens talk to repositories, never to Firebase directly.** Each repository owns one Firestore collection: its queries, its field names and how documents become Kotlin objects.
+- **Business rules are pure Kotlin.** Filtering, price parsing, distance, SA ID and phone validation sit in `ListingLogic` and `Validators`, with no Android code, so plain JUnit tests cover them on every push.
+- **Lifecycle-safe live data.** Lists use Firestore listeners tied to the screen's lifecycle and removed in `onStop`, so nothing leaks or updates a closed screen.
+- **One shared screen base.** `BaseActivity` handles Android 15 edge-to-edge insets and sends users through the Welcome screen if Android restarted the app without their session.
+
+### 3.2 Data model
+
+| Collection | Document id | Written by | Read by |
+| --- | --- | --- | --- |
 | `students` | Auth uid | the student | that student, admins |
-| `landlords` | Auth uid | admins (+ own photo / password flag) | that landlord, admins |
+| `landlords` | Auth uid | admins (landlord: own photo and password flag) | that landlord, admins |
 | `admins` | Auth uid | Firebase console | that admin |
-| `accommodations` | auto | admins (+ assigned landlord: room spaces only) | everyone, including guests |
-| `bookings` | auto | the student (create), the landlord (status) | that student, that landlord, admins |
-| `applications` | auto | the student (create), the landlord (status/feedback) | that student, that landlord, admins |
+| `accommodations` | auto | admins (assigned landlord: room spaces only) | everyone, including guests |
+| `bookings` | auto | student creates, landlord responds | that student, that landlord, admins |
+| `applications` | auto | student creates, landlord decides | that student, that landlord, admins |
+| `notifications` | auto | whoever performed the action | the recipient only |
 
-## Getting Started
+Records are linked by **ids** (`studentId`, `listingId`, `landlordId`), never by names. Renaming a student or a residence therefore can't break a booking.
 
-### Prerequisites
-- Android Studio (latest stable)
-- A Firebase project. The free **Spark** plan is enough. Only profile pictures need Cloud Storage, which requires the Blaze plan.
+### 3.3 Security and privacy
 
-### First-time Firebase setup
+- **One sign-in system for all three roles.** Students, landlords and admins all use Firebase Authentication. Firebase stores passwords as salted scrypt hashes; the app and the database never see them. A user's role is decided by which collection holds their uid.
+- **Rules enforce access, not just the app.** `firestore.rules` lets a student read only their own records, a landlord only their own listings' bookings and applications, and only admins change listings. Every query is scoped the same way, so a phone downloads only its user's data.
+- **No double-booking.** Approving an application takes a space off the room inside a Firestore **transaction**. Each booking or application is written in the same **batch** as its notification, so both are saved or neither is.
+- **POPIA.** The app collects the minimum data, shows an in-app privacy policy, and offers *Delete my account* (re-confirming identity first). SA ID numbers are checked for a valid birth date and Luhn checksum before saving.
 
-1. **Authentication:** Authentication → Sign-in method → enable **Email/Password**.
-2. **Firestore:** create the database if you haven't already. Then go to Firestore → **Rules**, paste in [`firestore.rules`](firestore.rules) and click **Publish**.
-3. **Storage (optional, Blaze plan only):** only needed for profile pictures. Storage → Get started. Then go to **Rules**, paste in [`storage.rules`](storage.rules) and click **Publish**. When asked, allow Storage to access Firestore.
-4. **Create the first admin.** The app never creates admins.
-   1. Authentication → Users → **Add user**, using an email and password.
-   2. Copy the new user's **UID**.
-   3. Firestore → start a collection called `admins`. Use the UID as the **document ID** and add the fields `name` (string) and `email` (string).
-   4. Log in to the app with that email. You'll land on the Admin dashboard.
-5. As admin, create landlords (Manage Landlords → +) and listings (Manage Listings → +). Assign each listing a landlord, otherwise it can't take bookings or applications.
-6. **Google sign-in (SSO)**
-   1. Authentication → Sign-in method → **Google** → Enable → choose a support email → Save.
-   2. Get your debug **SHA-1**:
-      - In Android Studio: Gradle panel → *app → Tasks → android → signingReport*.
-      - Or in a terminal: `keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android`
-   3. Project settings → Your apps → Android app → **Add fingerprint** → paste the SHA-1.
-   4. **Download `google-services.json` again** and replace `app/google-services.json`. It now contains the OAuth client the app needs, and the client ID is picked up automatically.
-   5. Rebuild.
-7. **Push notifications (FCM, free on Spark)**
-   1. Open the app once and log in, which subscribes the phone to its topics.
-   2. Go to Firebase console → **Messaging** → *Create your first campaign* → **Firebase Notification messages**.
-   3. Add a title and text.
-   4. Under Target, choose **Topic** and enter `students` (or `landlords`, `admins`, `all`), then publish.
-   5. A brand-new topic can take a few minutes to become available.
-8. **Republish `firestore.rules`** whenever this file changes. The latest version adds the `notifications` collection.
+### 3.4 Funding-aware matching
 
-### Upgrading from the earlier build
-Earlier versions stored landlord and admin passwords in Firestore and linked bookings and applications by name. After this update:
-- Delete the old `landlords` and `admins` documents. Create the admin as in step 4 and recreate landlords in the app.
-- Delete old test documents in `bookings` and `applications`. They have no `studentId`/`landlordId`, so nobody but an admin can see them.
-- Reassign every existing listing to its new landlord (edit the listing → choose the landlord → Save). The old landlord IDs no longer exist, so bookings and applications on unassigned listings would reach nobody.
-- Existing **student** accounts keep working as they are.
+- A residence with NSFAS and self-funded rooms appears as **two cards**, each showing only its own rooms and prices.
+- The homepage combines three independent filters: **funding type**, **near my campus** and **search**. Signed-in students start with their own funding type and campus, and can change these defaults in Settings.
+- Rent is stored as a number, so "From R2 500/mo" really is the cheapest room.
 
-### Run
-Open in Android Studio, let Gradle sync, then run on a device or emulator. Test on **Android 15 or newer** too, because edge-to-edge drawing is enforced there.
+### 3.5 Eleven languages
 
-### Tests
-```
-./gradlew testDebugUnitTest
-```
-`ListingLogicTest` covers filtering, campus matching, rent parsing and sorting. `ValidatorsTest` covers the SA ID, phone and email checks.
+- Every on-screen word (457 strings) lives in `res/values-<code>/strings.xml`: `af`, `zu`, `xh`, `b+nso` (Sepedi has no two-letter code), `tn`, `st`, `ts`, `ss`, `ve`, `nr`, with English as the default.
+- The switcher uses AppCompat's per-app language API, so the choice is remembered. On Android 13+ it also appears in the phone's own app settings.
+- **Stored data stays language-neutral.** Room types, amenities and funding are saved in English and translated only on screen, so filters and approvals work the same in every language.
 
-## Known Limitations / Roadmap
-- **Listing photos and video only display on the phone that picked them** (the admin's). Other phones show a placeholder. Sharing them needs Cloud Storage (Blaze plan) or a free image host.
-- **Application documents aren't uploaded.** Only their file names are saved, so landlords ask students to bring the documents to the viewing. Uploading needs Cloud Storage (Blaze plan).
-- Profile pictures need Cloud Storage, so they won't upload on the Spark plan.
-- Automatic event notifications (e.g. "viewing confirmed") arrive instantly while the app is running or recently used. Delivering them while the app is fully closed needs a server to send FCM messages (Cloud Functions require the Blaze plan). Console/topic pushes do arrive when the app is closed.
-- Deleting a landlord in the app removes their profile and blocks login. The Auth account itself has to be deleted in the console, or by a Cloud Function.
-- Campus matching is text-based ("Wits" ≠ "University of the Witwatersrand"). A fixed list of institutions would be more reliable.
+### 3.6 Offline-first actions
 
-## Author
+Students often run out of data, so booking a viewing and applying for a room work offline via a SQLite outbox and Android network callbacks. Listings already opened stay visible offline through Firestore's on-device cache.
 
-**Mpilonhle Memela**
-Final-year Diploma in IT (Software Development), Rosebank College (The IIE)
-[Mansuet Dev](https://mansuetdev.tech): freelance web & mobile development
-[GitHub](https://github.com/BENEDICT-COD) · [LinkedIn](https://linkedin.com/in/mpilonhle-memela-a71130293)
+### 3.7 Real-time notifications
 
-## License
+- **Event alerts.** Each action writes a small `notifications` document. Signed-in users listen for their unread alerts and get a system notification instantly.
+- **Push announcements.** Users are subscribed to FCM topics (`all`, `students`, `landlords`, `admins`) for broadcast messages.
 
-Developed for academic purposes as part of the OPSC Portfolio of Evidence at Rosebank College (The IIE).
+### 3.8 REST API: distance to campus
+
+The app calls the **OpenStreetMap Nominatim** geocoding API to turn listing and campus addresses into coordinates. Haversine formula provides straight-line distance.
+
+### 3.10 Constraints and trade-offs
+
+| Constraint | Decision |
+| --- | --- |
+| Firebase **Spark (free) plan**: no Cloud Storage | Listing photos are linked from the admin's device. Application documents are recorded by file name. |
+| Spark plan: no Cloud Functions | Event alerts are delivered in real time while the app is running. |
+| Nominatim is a shared free service | Results are cached and requests limited to one per second. |
+
+### 3.11 Testing
+
+- **Unit tests:** `ListingLogicTest` and `ValidatorsTest` cover filtering, campus matching, price parsing, and SA ID/phone validation.
+- **Tests command:** `./gradlew testDebugUnitTest`
+
+---
+
+## 4. GitHub and GitHub Actions
+
+- **Repository:** [BENEDICT-COD/BenSuetStay](https://github.com/BENEDICT-COD/BenSuetStay)
+- **CI/CD:** `android-ci.yml` runs tests and builds the debug APK on every push. `release.yml` builds a signed release APK when a version tag (e.g. `v2.0.0`) is pushed.
+
+---
+
+## 5. Release notes
+
+The full list of updates since the prototype is in **[RELEASE_NOTES.md](RELEASE_NOTES.md)**. Technical history is in [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+## 6. Getting started
+
+1. Clone the repo and open it in Android Studio.
+2. In **Firebase → Authentication**, enable **Email/Password** and **Google**.
+3. Add your SHA-1 to Firebase and download the new `google-services.json`.
+4. Publish `firestore.rules` to your project.
+5. **Create the first admin:** Add a user in Auth, then create a document in `admins/<UID>` with `name` and `email`.
+
+### Upgrading from an earlier build
+- Delete old `landlords` and `admins` documents from Firestore.
+- Recreate the admin and landlords through the app.
+- Reassign existing listings to their new landlord IDs.
+
+---
+
+## 7. PoE requirements map
+
+| Requirement | Where it's met |
+| --- | --- |
+| Register and log in, encrypted password | Firebase Authentication: `LoginActivity`, `RegisterActivity` |
+| Single sign-on | Continue with Google: `GoogleSignIn.kt` |
+| User settings | `StudentProfileActivity`, `LandlordProfileActivity` |
+| REST API | OpenStreetMap Nominatim: `GeocodingApi.kt` |
+| Offline mode with sync (SQLite) | `OfflineStore.kt`, `SyncManager.kt` |
+| Real-time notifications | `NotificationCenter.kt`, `BenSuetMessagingService.kt` |
+| At least two SA languages | All 11 SA languages: `res/values-*` |
+| NoSQL store and read | Cloud Firestore: `*Repository.kt` |
+
+---
+
+## 8. Demo video
+The video shows:
+1. Register and log in.
+2. Google sign-in.
+3. Settings & Language switch.
+4. Distance to campus.
+5. Offline booking and sync.
+6. Real-time notifications.
+7. Landlord and admin flows.
+
+---
+
+<p align="center"><sub>© 2026 Mpilonhle Memela · Mansuet Dev · Built for the OPSC6312 Portfolio of Evidence, Rosebank College (The IIE)</sub></p>
