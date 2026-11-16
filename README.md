@@ -154,7 +154,7 @@ The app calls the **OpenStreetMap Nominatim** geocoding API to turn listing and 
 - **Tests command:** `./gradlew testDebugUnitTest`
 
 ---
-# Changelog
+#MY PART 3 CHANGES
 
 ## Settings depth 
 Every Settings row now does real work, and the new features are controlled from Settings.
@@ -283,6 +283,7 @@ The full list of updates since the prototype is in **[RELEASE_NOTES.md](RELEASE_
 
 ## 8. Demo video
 The video shows:
+MY VIDEO LINK:  https://drive.google.com/file/d/1dhzIpdwjzfjv32CN37wXeFUEgEGsneGD/view?usp=sharing
 1. Register and log in.
 2. Google sign-in.
 3. Settings & Language switch.
